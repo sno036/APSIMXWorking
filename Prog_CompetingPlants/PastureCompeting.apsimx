@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="6">
   <Name>Simulations</Name>
   <DataStore>
@@ -32,7 +32,7 @@
             <Script>
               <CutRotationStartDate>1900-01-01</CutRotationStartDate>
               <CutRotationEndDate>2100-12-31</CutRotationEndDate>
-              <CutInterval>21</CutInterval>
+              <CutInterval>14</CutInterval>
               <IntervalType>FixedInterval</IntervalType>
               <DurationOfCut>1</DurationOfCut>
               <RemoveAmountType>ResidualDM</RemoveAmountType>
@@ -864,36 +864,6 @@ namespace Models
                 <double>0</double>
               </XF>
             </SoilCrop>
-            <SoilCrop>
-              <Name>Slurp</Name>
-              <LL>
-                <double>0.15</double>
-                <double>0.14</double>
-                <double>0.06</double>
-                <double>0.02</double>
-                <double>0.01</double>
-                <double>0.01</double>
-                <double>0.01</double>
-              </LL>
-              <KL>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-              </KL>
-              <XF>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-              </XF>
-            </SoilCrop>
             <Thickness>
               <double>150</double>
               <double>150</double>
@@ -1152,6 +1122,9 @@ namespace Models
             <OCUnits>Total</OCUnits>
             <PHUnits>Water</PHUnits>
           </Sample>
+          <CERESSoilTemperature>
+            <Name>CERESSoilTemperature</Name>
+          </CERESSoilTemperature>
           <RecordNumber>0</RecordNumber>
           <SoilType>NZ_Sedimentary</SoilType>
           <LocalName>Lismore</LocalName>
@@ -1162,8 +1135,6 @@ namespace Models
           <NaturalVegetation />
           <Latitude>-48.48</Latitude>
           <Longitude>0</Longitude>
-          <Area>0</Area>
-          <CERESSoilTemperature />
         </Soil>
         <Sward>
           <Name>Sward</Name>
@@ -2931,9 +2902,11 @@ namespace Models
             <IncludeInDocumentation>false</IncludeInDocumentation>
           </Graph>
         </Folder>
+        <SoluteManager>
+          <Name>SoluteManager</Name>
+        </SoluteManager>
         <Area>1</Area>
         <Slope>0</Slope>
-        <SoluteManager />
       </Zone>
       <Folder>
         <Name>PlantWt</Name>
@@ -4067,36 +4040,6 @@ namespace Models
                 <double>0</double>
               </XF>
             </SoilCrop>
-            <SoilCrop>
-              <Name>Slurp</Name>
-              <LL>
-                <double>0.15</double>
-                <double>0.14</double>
-                <double>0.06</double>
-                <double>0.02</double>
-                <double>0.01</double>
-                <double>0.01</double>
-                <double>0.01</double>
-              </LL>
-              <KL>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-                <double>0.06</double>
-              </KL>
-              <XF>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-                <double>1</double>
-              </XF>
-            </SoilCrop>
             <Thickness>
               <double>150</double>
               <double>150</double>
@@ -4355,6 +4298,9 @@ namespace Models
             <OCUnits>Total</OCUnits>
             <PHUnits>Water</PHUnits>
           </Sample>
+          <CERESSoilTemperature>
+            <Name>CERESSoilTemperature</Name>
+          </CERESSoilTemperature>
           <RecordNumber>0</RecordNumber>
           <SoilType>NZ_Sedimentary</SoilType>
           <LocalName>Lismore</LocalName>
@@ -4365,8 +4311,6 @@ namespace Models
           <NaturalVegetation />
           <Latitude>-48.48</Latitude>
           <Longitude>0</Longitude>
-          <Area>0</Area>
-          <CERESSoilTemperature />
         </Soil>
         <PastureSpecies>
           <Name>Ryegrass</Name>
@@ -5896,9 +5840,11 @@ namespace Models
             <IncludeInDocumentation>false</IncludeInDocumentation>
           </Graph>
         </Folder>
+        <SoluteManager>
+          <Name>SoluteManager</Name>
+        </SoluteManager>
         <Area>1</Area>
         <Slope>0</Slope>
-        <SoluteManager />
       </Zone>
       <Folder>
         <Name>PlantWt</Name>
