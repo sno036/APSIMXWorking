@@ -1,0 +1,54 @@
+[Clock].Today as Date
+([Ryegrass].TotalWt + [WhiteClover].TotalWt) as Sward.TotalWt
+([Ryegrass].AboveGroundWt + [WhiteClover].AboveGroundWt) as Sward.AboveGroundWt
+([Ryegrass].BelowGroundWt + [WhiteClover].BelowGroundWt) as Sward.BelowGroundWt
+([Ryegrass].StandingHerbageWt + [WhiteClover].StandingHerbageWt) as Sward.StandingHerbageWt
+([Ryegrass].HarvestableWt + [WhiteClover].HarvestableWt) as Sward.HarvestableWt
+([Ryegrass].HarvestedWt + [WhiteClover].HarvestedWt) as Sward.HarvestedWt
+([Ryegrass].GrossPotentialGrowthWt + [WhiteClover].GrossPotentialGrowthWt) as Sward.GrossPotentialGrowthWt
+([Ryegrass].NetGrowthWt + [WhiteClover].NetGrowthWt) as Sward.NetGrowthWt
+([Ryegrass].TotalN + [WhiteClover].TotalN) as Sward.TotalN
+([Ryegrass].LAIGreen + [WhiteClover].LAIGreen) as Sward.LAIGreen
+([Ryegrass].LAIDead + [WhiteClover].LAIDead) as Sward.LAIDead
+[Ryegrass].TotalWt as Ryegrass.TotalWt
+[WhiteClover].TotalWt as WhiteClover.TotalWt
+[Ryegrass].StandingHerbageWt as Ryegrass.StandingHerbageWt
+[WhiteClover].StandingHerbageWt as WhiteClover.StandingHerbageWt
+[Ryegrass].GrossPotentialGrowthWt as Ryegrass.GrossPotentialGrowthWt
+[WhiteClover].GrossPotentialGrowthWt as WhiteClover.GrossPotentialGrowthWt
+[Ryegrass].NetGrowthWt as Ryegrass.NetGrowthWt
+[WhiteClover].NetGrowthWt as WhiteClover.NetGrowthWt
+[Ryegrass].TotalN as Ryegrass.TotalN
+[WhiteClover].TotalN as WhiteClover.TotalN
+[Ryegrass].LeafNConc as Ryegrass.LeafNConc
+[WhiteClover].LeafNConc as WhiteClover.LeafNConc
+[Ryegrass].SoilDemandN as Ryegrass.SoilDemandN
+[WhiteClover].SoilDemandN as WhiteClover.SoilDemandN
+[Ryegrass].SoilAvailableN as Ryegrass.SoilAvailableN
+[WhiteClover].SoilAvailableN as WhiteClover.SoilAvailableN
+[Ryegrass].SoilUptakeN as Ryegrass.SoilUptakeN
+[WhiteClover].SoilUptakeN as WhiteClover.SoilUptakeN
+[Ryegrass].WaterDemand as Ryegrass.WaterDemand
+[WhiteClover].WaterDemand as WhiteClover.WaterDemand
+sum([Ryegrass].WaterAvailable) as Ryegrass.WaterAvailable
+sum([WhiteClover].WaterAvailable) as WhiteClover.WaterAvailable
+sum([Ryegrass].WaterUptake) as Ryegrass.WaterUptake
+sum([WhiteClover].WaterUptake) as WhiteClover.WaterUptake
+[Ryegrass].LAIGreen as Ryegrass.GreenLAI
+[WhiteClover].LAIGreen as WhiteClover.GreenLAI
+[Ryegrass].LAIDead as Ryegrass.DeadLAI
+[WhiteClover].LAIDead as WhiteClover.DeadLAI
+[Ryegrass].HarvestableWt as Ryegrass.HarvestableWt
+[WhiteClover].HarvestableWt as WhiteClover.HarvestableWt
+[Ryegrass].HarvestedWt as Ryegrass.HarvestedWt
+[WhiteClover].HarvestedWt as WhiteClover.HarvestedWt
+[Ryegrass].HerbageDigestibility as Ryegrass.HerbageDigestibility
+[WhiteClover].HerbageDigestibility as WhiteClover.HerbageDigestibility
+sum([Soil].SoilWater.SWmm) as TotalSoilWater
+[Irrigation].IrrigationApplied as IrrigationApplied
+sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as TotalSoilN
+[Fertiliser].NitrogenApplied as NitrogenApplied
+[Ryegrass].GlfWaterSupply as Ryegrass.GlfWaterSupply
+[WhiteClover].GlfWaterSupply as WhiteClover.GlfWaterSupply
+[Ryegrass].GlfNSupply as Ryegrass.GlfNSupply
+[WhiteClover].GlfNSupply as WhiteClover.GlfNSupply
