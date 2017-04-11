@@ -32,7 +32,7 @@
             <Script>
               <CutRotationStartDate>1900-01-01</CutRotationStartDate>
               <CutRotationEndDate>2100-12-31</CutRotationEndDate>
-              <CutInterval>14</CutInterval>
+              <CutInterval>21</CutInterval>
               <IntervalType>FixedInterval</IntervalType>
               <DurationOfCut>1</DurationOfCut>
               <RemoveAmountType>ResidualDM</RemoveAmountType>
