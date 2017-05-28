@@ -17081,7 +17081,7 @@ namespace Models
       </Folder>
     </Simulation>
     <Folder>
-      <Name>SimPlots</Name>
+      <Name>Plots</Name>
       <Graph>
         <Name>HarvestedZone0</Name>
         <Series>
@@ -17547,12 +17547,11 @@ namespace Models
         <Folder>
           <Name>Managers</Name>
           <Manager>
-            <Name>SlurpSowMulitple</Name>
+            <Name>SlurpSowMultAndRoots</Name>
             <Script>
               <NumSlurps>1</NumSlurps>
               <CultivarName>StaticCrop</CultivarName>
               <InitialRootDepth>600</InitialRootDepth>
-              <SowingDate>2000-01-01</SowingDate>
             </Script>
             <Code><![CDATA[
 using System;
@@ -17573,16 +17572,26 @@ namespace Models
 		[Description("How many Slurps should be sown?")] public int NumSlurps { get; set; }
 		[Description("Cultivar")] public string CultivarName { get; set; }
 		[Description("Initial Root Depth")] public double InitialRootDepth { get; set; }
-		[Description("Sowing Date")] public DateTime SowingDate { get; set; }
+		//[Description("Sowing Date")] public DateTime SowingDate { get; set; }
 
                
 		[EventSubscribe("DoManagement")] private void OnDoManagement(object sender, EventArgs e)
 		{
-			if (Clock.Today.Date == SowingDate)
+			if (Clock.Today.Date == Clock.StartDate)
 			{
 				Slurp1.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);
 				if (NumSlurps > 1)
 					Slurp2.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);	
+					
+				Slurp1.Root.ZoneNamesToGrowRootsIn.Add("Zone1");
+				//Slurp.Root.ZoneNamesToGrowRootsIn.Add("Zone3");
+				Slurp1.Root.ZoneRootDepths.Add(300);
+				//Slurp.Root.ZoneRootDepths.Add(50);
+				Slurp1.Root.ZoneInitialDM.Add(1000);
+				//Slurp.Root.ZoneInitialDM.Add(1000);
+
+					
+					
 			}
 		}
 	}
@@ -17590,14 +17599,13 @@ namespace Models
 				]]></Code>
           </Manager>
           <Manager>
-            <Name>SlurpSetProduction</Name>
+            <Name>SlurpSetProd</Name>
             <Script>
               <myNumSlurps>0</myNumSlurps>
               <OverRidePath>Leaf.Photosynthesis.FixedValue</OverRidePath>
-              <ChangeDate>1980-07-01</ChangeDate>
-              <OverRidePhoto>6</OverRidePhoto>
+              <OverRidePhoto>12</OverRidePhoto>
               <OverRideLAI>3.5</OverRideLAI>
-              <OverRideNUp>4</OverRideNUp>
+              <OverRideNUp>2</OverRideNUp>
             </Script>
             <Code><![CDATA[using System;
 using Models.Core;
@@ -17622,25 +17630,23 @@ namespace Models
 		public int myNumSlurps { get; set; }
 		public string OverRidePath { get; set; }
 		
-		[Description("Change Date")] public DateTime ChangeDate { get; set; }
+		//[Description("Change Date")] public DateTime ChangeDate { get; set; }
 		[Description("Value for Leaf.Photosynthesis.FixedValue")] public double OverRidePhoto { get; set; }
 		[Description("Value for Leaf.LAIFunction.FixedValue")] public double OverRideLAI { get; set; }
 		[Description("Value for Root.MaxDailyNUptake.FixedValue")] public double OverRideNUp { get; set; }
 		//[Description("Value for new coefficient Integer")] public int OverRideInteger { get; set; }
 
-
-
-
 		[EventSubscribe("StartOfSimulation")] private void OnStartOfSimulation(object sender, EventArgs e)
 		{
-			myNumSlurps = (int)zone.Get("[SlurpSowMulitple].Script.NumSlurps");
-			OverRidePath = "Leaf.Photosynthesis.FixedValue";
 		}
         
 		[EventSubscribe("DoManagement")] private void OnDoManagement(object sender, EventArgs e)
 		{
-			if (Clock.Today.Date == ChangeDate)
+			if (Clock.Today.Date == Clock.StartDate)
 			{
+				myNumSlurps = (int)zone.Get("[SlurpSowMultAndRoots].Script.NumSlurps");
+				//OverRidePath = "Leaf.Photosynthesis.FixedValue";
+
 				object ResetValue = OverRidePhoto;
 				OverRidePath = "Leaf.Photosynthesis.FixedValue";
 				zone.Set("Slurp1." + OverRidePath, ResetValue);
@@ -17658,6 +17664,7 @@ namespace Models
 				zone.Set("Slurp1." + OverRidePath, ResetValue);
 				if (myNumSlurps > 1)
 					zone.Set("Slurp2." + OverRidePath, ResetValue);
+
 			}
 		}
 	}
@@ -18315,7 +18322,7 @@ namespace Models
           <SoilOrganicMatter>
             <Name>SoilOrganicMatter</Name>
             <RootCN>40</RootCN>
-            <RootWt>1000</RootWt>
+            <RootWt>0</RootWt>
             <SoilCN>12</SoilCN>
             <EnrACoeff>7.4</EnrACoeff>
             <EnrBCoeff>0.2</EnrBCoeff>
@@ -18332,22 +18339,22 @@ namespace Models
               <string>45-60</string>
             </Depth>
             <OC>
-              <double>3</double>
-              <double>1</double>
-              <double>0.6</double>
-              <double>0.4</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
             </OC>
             <FBiom>
-              <double>0.04</double>
-              <double>0.02</double>
-              <double>0.02</double>
-              <double>0.01</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
             </FBiom>
             <FInert>
-              <double>0.5</double>
-              <double>0.7</double>
-              <double>0.83</double>
-              <double>0.9</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
             </FInert>
             <OCUnits>Total</OCUnits>
           </SoilOrganicMatter>
@@ -18418,10 +18425,784 @@ namespace Models
           <ExperimentFactorValues />
           <VariableNames>
             <string>[Clock].Today as Date</string>
-            <string>[Slurp1].Leaf.PotentialEP</string>
-            <string>[Slurp1].Root.WaterUptake</string>
-            <string>[Slurp1].Arbitrator.N.TotalPlantDemand</string>
-            <string>[Slurp1].Root.NTakenUp</string>
+            <string>[Slurp1].Leaf.CoverGreen as CoverGreen</string>
+            <string>[Slurp1].Leaf.PotentialEP as SW_Demand</string>
+            <string>[Slurp1].Root.WaterUptake as SW_Uptake</string>
+            <string>[Slurp1].Arbitrator.N.TotalPlantDemand as N_Demand</string>
+            <string>[Slurp1].Root.NTakenUp as N_Uptake</string>
+            <string>sum([Soil].SoilWater.SWmm) as SoilWater</string>
+            <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
+          </VariableNames>
+          <EventNames>
+            <string>[Clock].EndOfDay</string>
+          </EventNames>
+        </Report>
+        <Area>1</Area>
+        <Slope>0</Slope>
+      </Zone>
+      <Zone>
+        <Name>Zone1</Name>
+        <Folder>
+          <Name>Managers</Name>
+          <Manager>
+            <Name>AutomaticFertiliser</Name>
+            <Script>
+              <AllowFertiliser>no</AllowFertiliser>
+              <Depth2SoilN>500</Depth2SoilN>
+              <CriticalSoilN>50</CriticalSoilN>
+              <FertNAmount>25</FertNAmount>
+              <FertType>UreaN</FertType>
+              <FertApplicationDepth>1</FertApplicationDepth>
+              <FertMinimumDays>1</FertMinimumDays>
+            </Script>
+            <Code><![CDATA[using System;
+using Models.Core;
+using Models.PMF;
+using Models.Soils;
+using APSIM.Shared.Utilities;
+using System.Xml.Serialization;
+
+namespace Models
+{
+	[Serializable]
+	public class Script : Model
+	{
+		[Link] Clock Clock;
+		[Link] Fertiliser fertiliser;
+		[Link] ISummary summary = null;
+		[Link] Soil Soil;
+
+		//User inputs from properties tab
+		[Description("Turn ferliser applications on? ")]
+		public yesnoType AllowFertiliser { get; set; }
+		
+		[Description("Depth to calculate available soil N (mm): ")]
+		public double Depth2SoilN { get; set; }
+
+		[Description("Minimum available N, triggers an application (kgN/ha): ")]
+		public double CriticalSoilN { get; set; }
+
+		[Description("Amount of N fertiliser for each application (kgN/ha): ")]
+		public double FertNAmount { get; set; }
+
+		[Description("Type of N fertiliser to apply: ")]
+		public Fertiliser.Types FertType { get; set; }
+
+		[Description("Depth at which to apply the fertiliser (mm): ")]
+		public double FertApplicationDepth { get; set; }
+	   
+		[Description("Minimum period between applications (days): ")]
+		public double FertMinimumDays { get; set; }
+	   
+		public enum yesnoType
+		{
+			/// <summary>a positive answer</summary>
+			yes,
+			/// <summary>a negative answer</summary>
+			no
+		}
+
+		[XmlIgnore] public double TopMineralN { get; set; }
+		
+		private DateTime lastApplicationDate;
+		private bool fertiliserIsAllowed;
+		private int nLayers;
+
+		[EventSubscribe("StartOfSimulation")]
+		private void OnStartOfSimulation(object sender, EventArgs e)
+		{
+			fertiliserIsAllowed = (AllowFertiliser == yesnoType.yes);
+			nLayers = Soil.SoilWater.Thickness.Length;
+		}
+
+		[EventSubscribe("DoManagement")]
+		private void OnDoManagement(object sender, EventArgs e)
+		{
+			double daysSinceLastApplication = (Clock.Today - lastApplicationDate).TotalDays;
+			
+			// get the N stored in the soil
+			double depthFromSurface = 0.0;
+			double fracLayer = 0.0;
+			TopMineralN = 0.0;
+			for (int layer = 0; layer < nLayers; layer++)
+			{
+				fracLayer = Math.Min(1.0, (Depth2SoilN - depthFromSurface) / Soil.SoilWater.Thickness[layer]);
+				TopMineralN += (Soil.SoilNitrogen.NO3[layer]
+				+ Soil.SoilNitrogen.NH4[layer]
+				+ Soil.SoilNitrogen.urea[layer])
+				* fracLayer;
+				depthFromSurface += Soil.SoilWater.Thickness[layer];
+				if (depthFromSurface >= Depth2SoilN)
+					layer = nLayers;
+			}
+
+			if (fertiliserIsAllowed && (daysSinceLastApplication >= FertMinimumDays) && (TopMineralN <= CriticalSoilN))
+			{
+				fertiliser.Apply(FertNAmount, FertType, FertApplicationDepth);
+				lastApplicationDate = Clock.Today;
+			}
+		}
+	}
+}
+]]></Code>
+          </Manager>
+          <Manager>
+            <Name>AutomaticIrrigation</Name>
+            <Script>
+              <allowIrrigation>no</allowIrrigation>
+              <allowIrrigationAll>yes</allowIrrigationAll>
+              <seasonStart>15-Aug</seasonStart>
+              <seasonEnd>30-May</seasonEnd>
+              <seasonsAllocation>10000</seasonsAllocation>
+              <triggerDeficit>99</triggerDeficit>
+              <targetDeficit>100</targetDeficit>
+              <returndays>1</returndays>
+              <maximumAmount>5</maximumAmount>
+              <depthPAWC>600</depthPAWC>
+            </Script>
+            <Code><![CDATA[using System;
+using Models.Core;
+using Models.PMF;
+using Models.Soils;
+using System.Xml.Serialization;
+using Models.PMF;
+using APSIM.Shared.Utilities;
+
+        
+namespace Models
+{
+	[Serializable] 
+	[System.Xml.Serialization.XmlInclude(typeof(Model))]
+	public class Script : Model
+	{
+		//Communication to other modules
+		[Link] ISummary summary = null;
+		[Link] Irrigation Irrigation;
+		[Link] Clock Clock;
+		[Link] Soil Soil;
+		[Link(IsOptional = true)] ICrop existingCrop;
+	   
+		//User inputs from properties tab
+		[Description("Turn irrigation on?")] public answerType allowIrrigation { get; set; }
+		[Description("Irrigate regardless of crop state?")] public answerType allowIrrigationAll { get; set; }
+		[Description("Start of irrigation season (dd-MMM)")]
+		public string seasonStart { get; set; }
+		[Description("End of irrigation season (dd-MMM)")]
+		public string seasonEnd { get; set; }
+		[Description("Season allocation (mm)")]
+		public double seasonsAllocation { get; set; }
+		[Description("Deficit to trigger irrigation (% PAWC)")]
+		public double triggerDeficit { get; set; }
+		[Description("Deficit to stop irrigaton (% PAWC)")]
+		public double targetDeficit { get; set; }
+		[Description("Minimum days for irrigation to return")]
+		public double returndays { get; set; }
+		[Description("Maximum irrigation application (mm/day)")]
+		public double maximumAmount { get; set; }
+		[Description("Depth to calculate PAWC (mm)")]
+		public double depthPAWC { get; set; }
+	   
+		public enum answerType
+		{
+			/// <summary>a positive answer</summary>
+			yes,
+			/// <summary>a negative answer</summary>
+			no
+		}
+
+		//Class members
+		[XmlIgnore] public double TopSWdeficit { get; set; }
+		[XmlIgnore] public double TopSWC { get; set; }
+		[XmlIgnore] public double DaysSinceIrrigation { get; set; }
+		[XmlIgnore] public double AmountToApply { get; set; }
+		[XmlIgnore] public double SeasonAppliedAmount { get; set; }
+		
+		private bool IrrigationIsAllowed { get; set; }
+		private bool IrrigationIsAlwaysAllowed { get; set; }
+		
+		private bool SeasonIsOpen { get; set; }
+		private bool CropIsActive { get; set; }
+		private bool IrrigatorIsAvailable { get; set; }
+		private bool SoilIsDry { get; set; }
+
+		private DateTime StartDate;
+		private DateTime EndDate;
+		private double TopDUL;
+		private double TopLL;
+		private int nLayers;
+	
+		//Calculate static soil variables
+		[EventSubscribe("StartOfSimulation")]
+		private void OnStartOfSimulation(object sender, EventArgs e)
+		{   
+			//Set the season dates
+			StartDate = DateTime.Parse(seasonStart + "-" + Clock.Today.Year.ToString());
+			EndDate = DateTime.Parse(seasonEnd + "-" + Clock.Today.Year.ToString());
+			
+			//Can we irrigate at all?
+			IrrigationIsAllowed = false; 
+			if (allowIrrigation == answerType.yes)
+				IrrigationIsAllowed = true; 
+			if (allowIrrigationAll == answerType.yes)
+				IrrigationIsAlwaysAllowed = true; 
+
+
+
+
+
+			//Calculate soil water variables
+			double depthFromSurface = 0.0;
+			double fracLayer = 0.0;
+			nLayers = Soil.SoilWater.Thickness.Length;
+			for (int layer = 0; layer < nLayers; layer++)
+			{
+				fracLayer = Math.Min(1.0, (depthPAWC - depthFromSurface) / Soil.SoilWater.Thickness[layer]);
+				TopLL += Soil.SoilWater.LL15mm[layer] * fracLayer;
+				TopDUL += Soil.SoilWater.DULmm[layer] * fracLayer;
+				depthFromSurface += Soil.SoilWater.Thickness[layer];
+				if (depthFromSurface >= depthPAWC)
+					layer = nLayers;
+			}
+		}
+	   	  
+		//Determine daily requirement for irrigation
+		[EventSubscribe("StartOfDay")]
+		private void OnStartOfDay(object sender, EventArgs e)
+		{
+			//Can we irrigate today?		  
+			SeasonIsOpen = isBetween(Clock.Today, StartDate, EndDate);
+
+			//Is there a crop in the ground that needs irrigation?
+			CropIsActive = false;
+			if (IrrigationIsAlwaysAllowed)
+				CropIsActive = true;  // might not be but we don't care
+			else if ((existingCrop != null) && (existingCrop.IsAlive))
+				CropIsActive = true;
+			//if ((existingCrop.Phenology.Stage >= 3.0) && (existingCrop.Phenology.Stage < 6.0))
+	      
+			//Is the irrigator available?
+			IrrigatorIsAvailable = false;
+			DaysSinceIrrigation += 1;
+			if (DaysSinceIrrigation >= returndays)
+				IrrigatorIsAvailable = true;
+	      
+			//Is the soil dry enough to require irrigation?
+			SoilIsDry = false;
+			double depthFromSurface = 0.0;
+			double fracLayer = 0.0;
+			TopSWC = 0.0;
+			for (int layer = 0; layer < nLayers; layer++)
+			//for (int layer = 0; depthFromSurface < depthPAWC + Soil.SoilWater.Thickness[layer]; layer++)
+			{
+				fracLayer = Math.Min(1.0, (depthPAWC - depthFromSurface) / Soil.SoilWater.Thickness[layer]);
+				TopSWC += Soil.SoilWater.SWmm[layer] * fracLayer;
+				depthFromSurface += Soil.SoilWater.Thickness[layer];
+				if (depthFromSurface >= depthPAWC)
+					layer = nLayers;
+			}
+			
+			TopSWdeficit = TopSWC - TopDUL;
+			if (Math.Max(0.0, -TopSWdeficit) >= (TopDUL - TopLL) * (100 - triggerDeficit) / 100)
+				SoilIsDry = true;
+	            
+			//Are all the conditions ratifying irrigation
+			if (IrrigationIsAllowed && SeasonIsOpen && CropIsActive && IrrigatorIsAvailable && SoilIsDry)
+			{
+				//Lets bloody well irrigate then!!!!
+				AmountToApply = TopDUL * targetDeficit / 100 - TopSWC;
+				AmountToApply = Math.Max(0.0, Math.Min(AmountToApply, seasonsAllocation - SeasonAppliedAmount));
+				Irrigation.Apply(AmountToApply);
+				DaysSinceIrrigation = 0;
+				SeasonAppliedAmount += AmountToApply;
+			}
+		}
+		
+		///Checks whether theDate is between iniDate and endDate (non-year specific)
+		private bool isBetween(DateTime theDay, DateTime iniDate, DateTime endDate)
+		{
+			bool result = false;
+			if (iniDate.DayOfYear < endDate.DayOfYear)
+			{
+				// period is within one year, ex: summer in the northern hemisphere
+				if ((theDay.DayOfYear >= iniDate.DayOfYear) && (theDay.DayOfYear <= endDate.DayOfYear))
+					result = true;
+			}
+			else
+			{
+				// period goes over the end of the year, ex: summer in the southern hemisphere
+				if ((theDay.DayOfYear >= iniDate.DayOfYear) || (theDay.DayOfYear <= endDate.DayOfYear))
+					result = true;
+			}
+			
+			return result;
+		}
+	}
+}
+]]></Code>
+          </Manager>
+        </Folder>
+        <MicroClimate>
+          <Name>MicroClimate</Name>
+          <a_interception>0</a_interception>
+          <b_interception>1</b_interception>
+          <c_interception>0</c_interception>
+          <d_interception>0</d_interception>
+          <soil_albedo>0.23</soil_albedo>
+          <sun_angle>15</sun_angle>
+          <soil_heat_flux_fraction>0.4</soil_heat_flux_fraction>
+          <night_interception_fraction>0.5</night_interception_fraction>
+          <refheight>2</refheight>
+          <albedo>0.15</albedo>
+          <emissivity>0.96</emissivity>
+          <RadIntTotal>0</RadIntTotal>
+        </MicroClimate>
+        <Irrigation>
+          <Name>Irrigation</Name>
+        </Irrigation>
+        <Fertiliser>
+          <Name>Fertiliser</Name>
+        </Fertiliser>
+        <SurfaceOrganicMatter>
+          <Name>SurfaceOrganicMatter</Name>
+          <PondActive>no</PondActive>
+          <ReportAdditions>no</ReportAdditions>
+          <ReportRemovals>no</ReportRemovals>
+          <ResidueTypes>
+            <Name>ResidueTypes</Name>
+            <LoadFromResource>ResidueTypes</LoadFromResource>
+          </ResidueTypes>
+          <TillageTypes>
+            <Name>TillageTypesList</Name>
+            <TillageType />
+          </TillageTypes>
+          <Pools>
+            <Pool>
+              <PoolName>Sward</PoolName>
+              <ResidueType>grass</ResidueType>
+              <Mass>0</Mass>
+              <CNRatio>15</CNRatio>
+              <CPRatio>NaN</CPRatio>
+              <StandingFraction>0</StandingFraction>
+            </Pool>
+          </Pools>
+          <PoolName>Sward</PoolName>
+          <type>grass</type>
+          <mass>0</mass>
+          <standing_fraction>0</standing_fraction>
+          <cpr />
+          <cnr>15</cnr>
+          <CriticalResidueWeight>2000</CriticalResidueWeight>
+          <OptimumDecompTemp>20</OptimumDecompTemp>
+          <MaxCumulativeEOS>20</MaxCumulativeEOS>
+          <CNRatioDecompCoeff>0.277</CNRatioDecompCoeff>
+          <CNRatioDecompThreshold>25</CNRatioDecompThreshold>
+          <TotalLeachRain>25</TotalLeachRain>
+          <MinRainToLeach>10</MinRainToLeach>
+          <CriticalMinimumOrganicC>0.004</CriticalMinimumOrganicC>
+          <DefaultCPRatio>0</DefaultCPRatio>
+          <DefaultStandingFraction>0</DefaultStandingFraction>
+          <StandingExtinctCoeff>0.5</StandingExtinctCoeff>
+          <FractionFaecesAdded>0.5</FractionFaecesAdded>
+        </SurfaceOrganicMatter>
+        <Soil>
+          <Name>Soil</Name>
+          <Analysis>
+            <Name>Analysis</Name>
+            <Thickness>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+            </Thickness>
+            <Rocks>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </Rocks>
+            <Texture />
+            <MunsellColour />
+            <PH>
+              <double>6</double>
+              <double>6</double>
+              <double>6</double>
+              <double>6</double>
+            </PH>
+            <CEC>
+              <double>10</double>
+              <double>10</double>
+              <double>10</double>
+              <double>10</double>
+            </CEC>
+            <ParticleSizeSand>
+              <double>10</double>
+              <double>10</double>
+              <double>10</double>
+              <double>10</double>
+            </ParticleSizeSand>
+            <ParticleSizeSilt>
+              <double>30</double>
+              <double>30</double>
+              <double>30</double>
+              <double>30</double>
+            </ParticleSizeSilt>
+            <ParticleSizeClay>
+              <double>60</double>
+              <double>60</double>
+              <double>60</double>
+              <double>60</double>
+            </ParticleSizeClay>
+            <PHUnits>Water</PHUnits>
+            <BoronUnits>HotWater</BoronUnits>
+          </Analysis>
+          <Water>
+            <Name>Water</Name>
+            <SoilCrop>
+              <Name>RyegrassSoil</Name>
+              <LL>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+              </LL>
+              <KL>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+              </KL>
+              <XF>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+              </XF>
+            </SoilCrop>
+            <SoilCrop>
+              <Name>WhiteCloverSoil</Name>
+              <LL>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+              </LL>
+              <KL>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+              </KL>
+              <XF>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+              </XF>
+            </SoilCrop>
+            <SoilCrop>
+              <Name>SlurpSoil</Name>
+              <LL>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+              </LL>
+              <KL>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+              </KL>
+              <XF>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+              </XF>
+            </SoilCrop>
+            <SoilCrop>
+              <Name>Slurp1Soil</Name>
+              <LL>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+              </LL>
+              <KL>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+              </KL>
+              <XF>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+              </XF>
+            </SoilCrop>
+            <SoilCrop>
+              <Name>Slurp2Soil</Name>
+              <LL>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+                <double>0.1</double>
+              </LL>
+              <KL>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+                <double>0.05</double>
+              </KL>
+              <XF>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+                <double>1</double>
+              </XF>
+            </SoilCrop>
+            <Thickness>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+            </Thickness>
+            <BD>
+              <double>1.3</double>
+              <double>1.3</double>
+              <double>1.3</double>
+              <double>1.3</double>
+            </BD>
+            <AirDry>
+              <double>0.05</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+            </AirDry>
+            <LL15>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+            </LL15>
+            <DUL>
+              <double>0.45</double>
+              <double>0.45</double>
+              <double>0.45</double>
+              <double>0.45</double>
+            </DUL>
+            <SAT>
+              <double>0.5</double>
+              <double>0.5</double>
+              <double>0.5</double>
+              <double>0.5</double>
+            </SAT>
+            <KS>
+              <double>500</double>
+              <double>500</double>
+              <double>500</double>
+              <double>500</double>
+            </KS>
+          </Water>
+          <SoilWater>
+            <Name>SoilWater</Name>
+            <SummerDate>1-Nov</SummerDate>
+            <SummerU>6</SummerU>
+            <SummerCona>3.5</SummerCona>
+            <WinterDate>1-apr</WinterDate>
+            <WinterU>2</WinterU>
+            <WinterCona>2</WinterCona>
+            <DiffusConst>88</DiffusConst>
+            <DiffusSlope>35</DiffusSlope>
+            <Salb>0.13</Salb>
+            <CN2Bare>73</CN2Bare>
+            <CNRed>20</CNRed>
+            <CNCov>0.8</CNCov>
+            <slope>0</slope>
+            <discharge_width>0</discharge_width>
+            <catchment_area>0</catchment_area>
+            <max_pond>0</max_pond>
+            <Thickness>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+            </Thickness>
+            <SWCON>
+              <double>0.3</double>
+              <double>0.3</double>
+              <double>0.3</double>
+              <double>0.3</double>
+            </SWCON>
+            <KLAT>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </KLAT>
+            <residueinterception>0</residueinterception>
+          </SoilWater>
+          <SoilNitrogen>
+            <Name>SoilNitrogen</Name>
+            <fom_type>
+              <string>default</string>
+              <string>manure</string>
+              <string>mucuna</string>
+              <string>lablab</string>
+              <string>shemp</string>
+              <string>stable</string>
+            </fom_type>
+            <fract_carb>
+              <double>0.2</double>
+              <double>0.3</double>
+              <double>0.54</double>
+              <double>0.57</double>
+              <double>0.45</double>
+              <double>0</double>
+            </fract_carb>
+            <fract_cell>
+              <double>0.7</double>
+              <double>0.3</double>
+              <double>0.37</double>
+              <double>0.37</double>
+              <double>0.47</double>
+              <double>0.1</double>
+            </fract_cell>
+            <fract_lign>
+              <double>0.1</double>
+              <double>0.4</double>
+              <double>0.09</double>
+              <double>0.06</double>
+              <double>0.08</double>
+              <double>0.9</double>
+            </fract_lign>
+            <wfpsN2N2O_x>
+              <double>22</double>
+              <double>88</double>
+            </wfpsN2N2O_x>
+            <wfpsN2N2O_y>
+              <double>0.1</double>
+              <double>1</double>
+            </wfpsN2N2O_y>
+            <oc>
+              <double>3.7136764881329496</double>
+              <double>2.4698281813043792</double>
+              <double>1.2383961716086014</double>
+              <double>0.49836009167083023</double>
+            </oc>
+          </SoilNitrogen>
+          <SoilOrganicMatter>
+            <Name>SoilOrganicMatter</Name>
+            <RootCN>40</RootCN>
+            <RootWt>0</RootWt>
+            <SoilCN>12</SoilCN>
+            <EnrACoeff>7.4</EnrACoeff>
+            <EnrBCoeff>0.2</EnrBCoeff>
+            <Thickness>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+            </Thickness>
+            <Depth>
+              <string>0-15</string>
+              <string>15-30</string>
+              <string>30-45</string>
+              <string>45-60</string>
+            </Depth>
+            <OC>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </OC>
+            <FBiom>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </FBiom>
+            <FInert>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </FInert>
+            <OCUnits>Total</OCUnits>
+          </SoilOrganicMatter>
+          <InitialWater>
+            <Name>Initial water</Name>
+            <PercentMethod>EvenlyDistributed</PercentMethod>
+            <FractionFull>0.95</FractionFull>
+            <DepthWetSoil>NaN</DepthWetSoil>
+          </InitialWater>
+          <Sample>
+            <Name>Initial nitrogen</Name>
+            <Thickness>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+              <double>150</double>
+            </Thickness>
+            <NO3>
+              <double>25</double>
+              <double>25</double>
+              <double>25</double>
+              <double>25</double>
+            </NO3>
+            <NH4>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+              <double>0</double>
+            </NH4>
+            <NO3Units>ppm</NO3Units>
+            <NH4Units>ppm</NH4Units>
+            <SWUnits>Volumetric</SWUnits>
+            <OCUnits>Total</OCUnits>
+            <PHUnits>Water</PHUnits>
+          </Sample>
+          <CERESSoilTemperature>
+            <Name>CERESSoilTemperature</Name>
+          </CERESSoilTemperature>
+          <RecordNumber>0</RecordNumber>
+          <SoilType />
+          <LocalName>Stores lots of water</LocalName>
+          <Site>Made up</Site>
+          <NearestTown />
+          <Region />
+          <Country />
+          <NaturalVegetation />
+          <Latitude>0</Latitude>
+          <Longitude>0</Longitude>
+        </Soil>
+        <SoluteManager>
+          <Name>SoluteManager</Name>
+        </SoluteManager>
+        <Plant>
+          <Name>Slurp1</Name>
+          <ResourceName>Slurp</ResourceName>
+          <CropType>Slurp</CropType>
+          <SowingDate>0001-01-01T00:00:00</SowingDate>
+        </Plant>
+        <Plant>
+          <Name>Slurp2</Name>
+          <ResourceName>Slurp</ResourceName>
+          <CropType>Slurp</CropType>
+          <SowingDate>0001-01-01T00:00:00</SowingDate>
+        </Plant>
+        <Report>
+          <Name>Results</Name>
+          <ExperimentFactorNames />
+          <ExperimentFactorValues />
+          <VariableNames>
+            <string>[Clock].Today as Date</string>
+            <string>[Slurp1].Leaf.CoverGreen as CoverGreen</string>
+            <string>[Slurp1].Leaf.PotentialEP as SW_Demand</string>
+            <string>[Slurp1].Root.WaterUptake as SW_Uptake</string>
+            <string>[Slurp1].Arbitrator.N.TotalPlantDemand as N_Demand</string>
+            <string>[Slurp1].Root.NTakenUp as N_Uptake</string>
             <string>sum([Soil].SoilWater.SWmm) as SoilWater</string>
             <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           </VariableNames>
@@ -18433,11 +19214,11 @@ namespace Models
         <Slope>0</Slope>
       </Zone>
       <Folder>
-        <Name>Herbage</Name>
+        <Name>SimPlots</Name>
         <Graph>
-          <Name>PlantWt</Name>
+          <Name>SoilWater</Name>
           <Series>
-            <Name>Ryegrass</Name>
+            <Name>Water</Name>
             <Type>Scatter</Type>
             <XAxis>Bottom</XAxis>
             <YAxis>Left</YAxis>
@@ -18451,7 +19232,7 @@ namespace Models
             <LineThickness>Normal</LineThickness>
             <TableName>Results</TableName>
             <XFieldName>Date</XFieldName>
-            <YFieldName>PlantMass</YFieldName>
+            <YFieldName>SoilWater</YFieldName>
             <ShowInLegend>true</ShowInLegend>
             <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
             <Cumulative>false</Cumulative>
@@ -18477,9 +19258,9 @@ namespace Models
           <IncludeInDocumentation>false</IncludeInDocumentation>
         </Graph>
         <Graph>
-          <Name>Harvested</Name>
+          <Name>SoilNitrogen</Name>
           <Series>
-            <Name>Ryegrass</Name>
+            <Name>Nitrogen</Name>
             <Type>Scatter</Type>
             <XAxis>Bottom</XAxis>
             <YAxis>Left</YAxis>
@@ -18493,10 +19274,52 @@ namespace Models
             <LineThickness>Normal</LineThickness>
             <TableName>Results</TableName>
             <XFieldName>Date</XFieldName>
-            <YFieldName>Harvested</YFieldName>
+            <YFieldName>SoilNitrogen</YFieldName>
             <ShowInLegend>true</ShowInLegend>
             <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-            <Cumulative>true</Cumulative>
+            <Cumulative>false</Cumulative>
+            <CumulativeX>false</CumulativeX>
+          </Series>
+          <Axis>
+            <Type>Left</Type>
+            <Title />
+            <Inverted>false</Inverted>
+            <Minimum>NaN</Minimum>
+            <Maximum>NaN</Maximum>
+            <Interval>NaN</Interval>
+          </Axis>
+          <Axis>
+            <Type>Bottom</Type>
+            <Inverted>false</Inverted>
+            <Minimum>NaN</Minimum>
+            <Maximum>NaN</Maximum>
+            <Interval>NaN</Interval>
+          </Axis>
+          <LegendPosition>TopRight</LegendPosition>
+          <DisabledSeries />
+          <IncludeInDocumentation>false</IncludeInDocumentation>
+        </Graph>
+        <Graph>
+          <Name>CoverGreen</Name>
+          <Series>
+            <Name>CoverGreen</Name>
+            <Type>Scatter</Type>
+            <XAxis>Bottom</XAxis>
+            <YAxis>Left</YAxis>
+            <ColourArgb>-16736653</ColourArgb>
+            <FactorIndexToVaryColours>0</FactorIndexToVaryColours>
+            <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+            <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+            <Marker>None</Marker>
+            <MarkerSize>Normal</MarkerSize>
+            <Line>Solid</Line>
+            <LineThickness>Normal</LineThickness>
+            <TableName>Results</TableName>
+            <XFieldName>Date</XFieldName>
+            <YFieldName>CoverGreen</YFieldName>
+            <ShowInLegend>true</ShowInLegend>
+            <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+            <Cumulative>false</Cumulative>
             <CumulativeX>false</CumulativeX>
           </Series>
           <Axis>
@@ -18526,16 +19349,16 @@ namespace Models
             <XAxis>Bottom</XAxis>
             <YAxis>Left</YAxis>
             <ColourArgb>-16736653</ColourArgb>
-            <FactorIndexToVaryColours>-1</FactorIndexToVaryColours>
+            <FactorIndexToVaryColours>0</FactorIndexToVaryColours>
             <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
             <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-            <Marker>Cross</Marker>
+            <Marker>None</Marker>
             <MarkerSize>Normal</MarkerSize>
             <Line>Solid</Line>
             <LineThickness>Normal</LineThickness>
             <TableName>Results</TableName>
             <XFieldName>Date</XFieldName>
-            <YFieldName>Slurp1.Leaf.PotentialEP</YFieldName>
+            <YFieldName>SW_Demand</YFieldName>
             <ShowInLegend>true</ShowInLegend>
             <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
             <Cumulative>false</Cumulative>
@@ -18624,9 +19447,9 @@ namespace Models
           <IncludeInDocumentation>false</IncludeInDocumentation>
         </Graph>
         <Graph>
-          <Name>WaterStress</Name>
+          <Name>NDemand</Name>
           <Series>
-            <Name>Ryegrass</Name>
+            <Name>Demand</Name>
             <Type>Scatter</Type>
             <XAxis>Bottom</XAxis>
             <YAxis>Left</YAxis>
@@ -18640,49 +19463,7 @@ namespace Models
             <LineThickness>Normal</LineThickness>
             <TableName>Results</TableName>
             <XFieldName>Date</XFieldName>
-            <YFieldName>glfWater</YFieldName>
-            <ShowInLegend>true</ShowInLegend>
-            <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-            <Cumulative>false</Cumulative>
-            <CumulativeX>false</CumulativeX>
-          </Series>
-          <Axis>
-            <Type>Left</Type>
-            <Title />
-            <Inverted>false</Inverted>
-            <Minimum>0</Minimum>
-            <Maximum>1.1</Maximum>
-            <Interval>NaN</Interval>
-          </Axis>
-          <Axis>
-            <Type>Bottom</Type>
-            <Inverted>false</Inverted>
-            <Minimum>NaN</Minimum>
-            <Maximum>NaN</Maximum>
-            <Interval>NaN</Interval>
-          </Axis>
-          <LegendPosition>TopRight</LegendPosition>
-          <DisabledSeries />
-          <IncludeInDocumentation>false</IncludeInDocumentation>
-        </Graph>
-        <Graph>
-          <Name>NStress</Name>
-          <Series>
-            <Name>Ryegrass</Name>
-            <Type>Scatter</Type>
-            <XAxis>Bottom</XAxis>
-            <YAxis>Left</YAxis>
-            <ColourArgb>-16736653</ColourArgb>
-            <FactorIndexToVaryColours>0</FactorIndexToVaryColours>
-            <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-            <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-            <Marker>None</Marker>
-            <MarkerSize>Normal</MarkerSize>
-            <Line>Solid</Line>
-            <LineThickness>Normal</LineThickness>
-            <TableName>Results</TableName>
-            <XFieldName>Date</XFieldName>
-            <YFieldName>glfNitrogen</YFieldName>
+            <YFieldName>N_Demand</YFieldName>
             <ShowInLegend>true</ShowInLegend>
             <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
             <Cumulative>false</Cumulative>
@@ -18708,9 +19489,9 @@ namespace Models
           <IncludeInDocumentation>false</IncludeInDocumentation>
         </Graph>
         <Graph>
-          <Name>SoilWater</Name>
+          <Name>NUptake</Name>
           <Series>
-            <Name>Water</Name>
+            <Name>Uptake</Name>
             <Type>Scatter</Type>
             <XAxis>Bottom</XAxis>
             <YAxis>Left</YAxis>
@@ -18724,49 +19505,7 @@ namespace Models
             <LineThickness>Normal</LineThickness>
             <TableName>Results</TableName>
             <XFieldName>Date</XFieldName>
-            <YFieldName>SoilWater</YFieldName>
-            <ShowInLegend>true</ShowInLegend>
-            <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-            <Cumulative>false</Cumulative>
-            <CumulativeX>false</CumulativeX>
-          </Series>
-          <Axis>
-            <Type>Left</Type>
-            <Title />
-            <Inverted>false</Inverted>
-            <Minimum>NaN</Minimum>
-            <Maximum>NaN</Maximum>
-            <Interval>NaN</Interval>
-          </Axis>
-          <Axis>
-            <Type>Bottom</Type>
-            <Inverted>false</Inverted>
-            <Minimum>NaN</Minimum>
-            <Maximum>NaN</Maximum>
-            <Interval>NaN</Interval>
-          </Axis>
-          <LegendPosition>TopRight</LegendPosition>
-          <DisabledSeries />
-          <IncludeInDocumentation>false</IncludeInDocumentation>
-        </Graph>
-        <Graph>
-          <Name>SoilNitrogen</Name>
-          <Series>
-            <Name>Nitrogen</Name>
-            <Type>Scatter</Type>
-            <XAxis>Bottom</XAxis>
-            <YAxis>Left</YAxis>
-            <ColourArgb>-16736653</ColourArgb>
-            <FactorIndexToVaryColours>0</FactorIndexToVaryColours>
-            <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-            <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-            <Marker>None</Marker>
-            <MarkerSize>Normal</MarkerSize>
-            <Line>Solid</Line>
-            <LineThickness>Normal</LineThickness>
-            <TableName>Results</TableName>
-            <XFieldName>Date</XFieldName>
-            <YFieldName>SoilNitrogen</YFieldName>
+            <YFieldName>N_Uptake</YFieldName>
             <ShowInLegend>true</ShowInLegend>
             <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
             <Cumulative>false</Cumulative>
