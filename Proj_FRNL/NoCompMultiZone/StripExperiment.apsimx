@@ -12151,6 +12151,145 @@ namespace Models
 }
 ]]></Code>
     </Manager>
+    <Manager>
+      <Name>DoFertMultiZoneGod1</Name>
+      <Script>
+        <DateFert2Add>2000-01-01</DateFert2Add>
+        <strZonesFert2Add>Z0 Z02</strZonesFert2Add>
+        <AmtFert2Add>1000</AmtFert2Add>
+      </Script>
+      <Code><![CDATA[using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using Models.Core;
+using Models.PMF;
+using APSIM.Shared.Utilities;
+
+namespace Models
+{
+	[Serializable]
+	public class Script : Model
+	{
+		[Link] Summary Summary;
+		[Link] Clock Clock;
+		//[Link] Weather Weather;
+		[Link] Simulation Simulation;
+		
+		// - Paramters for this manager
+		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
+		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
+		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+
+		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
+
+		private Zone[] Zones { get; set; }
+		public string[] ZonesFert2Add;
+
+		[EventSubscribe("Commencing")] private void OnSimulationCommencing(object sender, EventArgs e)
+		{
+			ZonesFert2Add = strZonesFert2Add.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
+			// this will get replaced with an auto-population of the names
+			string[] ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
+		}
+        
+		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
+		{
+			// Set up our list of zones in the simulation
+			List<Zone> zones = new List<Zone>();
+			foreach (Zone zone in Apsim.FindAll(this.Parent, typeof(Zone)))
+				zones.Add(zone as Zone);
+			Zones = zones.ToArray();
+			
+			for (int i = 0; i < Zones.Length; i++)
+			{
+				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
+				{
+					if (ZoneNames[i] == ZonesFert2Add[ii])
+					{
+						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+						fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
+					}
+				}
+			} 
+		}
+		
+		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
+		{
+		}
+	}
+}
+]]></Code>
+    </Manager>
+    <Manager>
+      <Name>DoFertMultiZoneGod2</Name>
+      <Script>
+        <DateFert2Add>2000-01-01</DateFert2Add>
+        <strZonesFert2Add>Z0 Z02</strZonesFert2Add>
+        <AmtFert2Add>1000</AmtFert2Add>
+      </Script>
+      <Code><![CDATA[using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using Models.Core;
+using Models.PMF;
+using APSIM.Shared.Utilities;
+
+namespace Models
+{
+	[Serializable]
+	public class Script : Model
+	{
+		[Link] Summary Summary;
+		[Link] Clock Clock;
+		//[Link] Weather Weather;
+		[Link] Simulation Simulation;
+		
+		// - Paramters for this manager
+		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
+		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
+		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+
+		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
+
+		private Zone[] Zones { get; set; }
+		public string[] ZonesFert2Add;
+		string[] ZoneNames;
+
+		[EventSubscribe("Commencing")] private void OnSimulationCommencing(object sender, EventArgs e)
+		{
+			ZonesFert2Add = strZonesFert2Add.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
+			// this will get replaced with an auto-population of the names
+			ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
+		}
+        
+		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
+		{
+			// Set up our list of zones in the simulation
+			List<Zone> zones = new List<Zone>();
+			foreach (Zone zone in Apsim.FindAll(this.Parent, typeof(Zone)))
+				zones.Add(zone as Zone);
+			Zones = zones.ToArray();
+			
+			for (int i = 0; i < Zones.Length; i++)
+			{
+				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
+				{
+					if (ZoneNames[i] == ZonesFert2Add[ii])
+					{
+						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+						fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
+					}
+				}
+			} 
+		}
+		
+		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
+		{
+		}
+	}
+}
+]]></Code>
+    </Manager>
   </Folder>
   <Simulation>
     <Name>StripExpt_GodMgr1</Name>
@@ -15470,7 +15609,7 @@ namespace Models
     <Clock>
       <Name>Clock</Name>
       <StartDate>2000-01-01T00:00:00</StartDate>
-      <EndDate>2000-01-31T00:00:00</EndDate>
+      <EndDate>2000-01-01T00:00:00</EndDate>
     </Clock>
     <ControlledEnvironment>
       <Name>ControlledEnvironment</Name>
@@ -15496,9 +15635,9 @@ namespace Models
       <Name>DoFertMultiZoneGod</Name>
       <Script>
         <DateFert2Add>2000-01-01</DateFert2Add>
-        <AmtFert2Add>1000</AmtFert2Add>
-        <strZonesFert2Add>
-        </strZonesFert2Add>
+        <strZonesFert2Add>Z0</strZonesFert2Add>
+        <AmtFert2Add>100</AmtFert2Add>
+        <DepthFert2Add>450</DepthFert2Add>
       </Script>
       <Code><![CDATA[using System;
 using System.Collections.Generic;
@@ -15506,6 +15645,7 @@ using System.Xml.Serialization;
 using Models.Core;
 using Models.PMF;
 using APSIM.Shared.Utilities;
+using Models.Soils;
 
 namespace Models
 {
@@ -15521,24 +15661,19 @@ namespace Models
 		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
 		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
 		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+		[Description("Spread the N from the surface to a depth of (mm): ")]  public double DepthFert2Add { get; set; }
 
 		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
 
-		
-		//public double[] Today_PatchIrrigation { get; set; }
-
-		//Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-		//fertiliser.Apply(Amount: Fert_rate, Depth: Fert_depth, Type: Fertiliser.Types.NO3N);
-
-
-        
 		private Zone[] Zones { get; set; }
 		public string[] ZonesFert2Add;
-
+		string[] ZoneNames;
 
 		[EventSubscribe("Commencing")] private void OnSimulationCommencing(object sender, EventArgs e)
 		{
 			ZonesFert2Add = strZonesFert2Add.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
+			// this will get replaced with an auto-population of the names
+			ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
 		}
         
 		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
@@ -15549,39 +15684,51 @@ namespace Models
 				zones.Add(zone as Zone);
 			Zones = zones.ToArray();
 			
-			Summary.WriteMessage(this, "1 - just done zones");
-			
-			//ZoneNames = strZoneNames.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-			string[] ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
-			// find where I am in this array
-			//int MyZoneNum = Array.IndexOf(ZoneNames, ZoneFert2Add);
-			
-			Summary.WriteMessage(this, "2 - just done zones");
-			
-			//double[] PaddedRootProps = new double[3] { 100.0, 0.0, 100.0 };
-               
-			//Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-			//Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
-			
-			//AgPasture.PastureSpecies agpasture = Apsim.Find(Zones[1], typeof(AgPasture.PastureSpecies)) as AgPasture.PastureSpecies;
-			//agpasture.AddZone(zoneName: ZoneNames[0], rootDepth: PaddedRootProps[0] * RootDepth, rootDM: PaddedRootProps[0] * RootMass, specificRootLength: 100);
-			//agpasture.AddZone(zoneName: ZoneNames[2], rootDepth: PaddedRootProps[2] * RootDepth, rootDM: PaddedRootProps[2] * RootMass, specificRootLength: 100);
-
 			for (int i = 0; i < Zones.Length; i++)
 			{
 				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
 				{
-					int MyZoneNum = Array.IndexOf(ZoneNames, ZonesFert2Add);
-					if (MyZoneNum < Zones.Length)
+					if (ZoneNames[i] == ZonesFert2Add[ii])
 					{
-						//Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+						Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
+						
+						double PropFertAdded = 0.0;
+						double[] CumDepth = new double[soil.SoilWater.dlayer.Length];
+						CumDepth[0] = soil.SoilWater.dlayer[0];
+						for (int j = 0; j < soil.SoilWater.dlayer.Length; j++)
+						{
+							double Prop2Add = 0.0;
+							if (j == 0)
+								CumDepth[j] = soil.SoilWater.dlayer[j];
+							else
+								CumDepth[j] = CumDepth[j - 1] + soil.SoilWater.dlayer[j];
+
+							if (CumDepth[j] <= DepthFert2Add)
+							{
+								if (j == 0)
+									Prop2Add = soil.SoilWater.dlayer[j] / DepthFert2Add;
+								else
+									Prop2Add = (CumDepth[j] - CumDepth[j - 1]) / DepthFert2Add;
+								PropFertAdded += Prop2Add;
+							}
+							else
+							{
+								Prop2Add = (1.0 - PropFertAdded);
+								PropFertAdded += Prop2Add;
+							}
+							if (Prop2Add > 0.0)
+							{
+								fertiliser.Apply(Amount: AmtFert2Add * Prop2Add, Depth: (CumDepth[j] - soil.SoilWater.dlayer[j] / 2.0), Type: Fertiliser.Types.NO3N);
+							}
+						}
+
+						
 						//fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
-					
 					}
 				}
 			} 
 		}
-		
 		
 		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
 		{
@@ -16277,6 +16424,7 @@ namespace Models
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
           <string>[Clock].EndOfDay</string>
@@ -16289,354 +16437,6 @@ namespace Models
       <Name>Z01</Name>
       <Folder>
         <Name>Managers</Name>
-        <Manager>
-          <Name>CutRotationSingle</Name>
-          <Script>
-            <CutRotationStartDate>1900-07-01</CutRotationStartDate>
-            <CutRotationEndDate>2100-12-31</CutRotationEndDate>
-            <CutInterval>1</CutInterval>
-            <IntervalType>FixedInterval</IntervalType>
-            <DurationOfCut>1</DurationOfCut>
-            <RemoveAmountType>ResidualDM</RemoveAmountType>
-            <AmountGiven>2250</AmountGiven>
-            <DMRemoveType>RemoveAll</DMRemoveType>
-            <FractionN2Remove>1</FractionN2Remove>
-            <ProportionN2Dung>0</ProportionN2Dung>
-          </Script>
-          <Code><![CDATA[// Defoliates AgPasture on a regular rotation or one-off via a schedule
-// currenty defoliates the amount specified by spreading evenly over the specified period
-
-using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using Models.Core;
-using Models.PMF;
-using APSIM.Shared.Utilities;
-
-namespace Models
-{
-	[Serializable]
-	public class Script : Model
-	{
-		// - Links to APSIM models
-		[Link] Zone myZone;
-		[Link] Clock Clock;
-		[Link] Fertiliser fertiliser;
-		[Link] ISummary summary = null;
-		
-		List<AgPasture.PastureSpecies> Pasture = new List<AgPasture.PastureSpecies>();
-		
-		// - Paramters for this manager
-		[Description("Date to begin the rotation: ")]
-		public DateTime CutRotationStartDate { get; set; }
-
-		[Description("Date to finish the rotation: ")]
-		public DateTime CutRotationEndDate { get; set; }
-
-		[Description("Rotation interval (days): ")]
-		public int CutInterval { get; set; }
-
-		[Description("How the interval is defined: ")]
-		public rotationIntervalTypes IntervalType { get; set; }
-
-		[Description("Duration of each event (days): ")]
-		public int DurationOfCut { get; set; }
-
-		[Description("What amount is being defined: ")]
-		public removeAmountTypes RemoveAmountType { get; set; }
-
-		[Description("Amount to use (kg/ha): ")]
-		public double AmountGiven { get; set; }
-
-		[Description("Fraction of DM that is removed from the field:")]
-		public removeDMTypes DMRemoveType { get; set; }
-
-		[Description("Fraction of N that is removed from the field (0-1):")]
-		public double FractionN2Remove { get; set; }
-
-		[Description("Proportion of N returned in dung (0-1):")]
-		public double ProportionN2Dung { get; set; }
-
-		// - Outputs from this manager
-		[XmlIgnore][Units("g/m2")]// Description: Pasture DM defoliated today
-		public double DefoliatedWt { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Pasture N defoliate today
-		public double DefoliatedN { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Pasture DM harvested today
-		public double HarvestedWt { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Pasture N harvested today
-		public double HarvestedN { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Pasture DM removed from the field
-		public double RemovedWt { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Pasture N removed from the field
-		public double RemovedN { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Residue DM returned to the field
-		public double ReturnedWt { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Residue N returned to the field
-		public double ReturnedN { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Harvested N returned as dung (SurfaceOM)
-		public double NReturnedInDung { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Harvested N returned as urine (urea)
-		public double NReturnedInUrine { get; set; }
-		[XmlIgnore][Units("day")]// Description: Number of days after last defoliation
-		public int DaysAfterCut { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Total standing DM (Leaf + Stem/Sheath) before cut
-		public double PreHarvestDM { get; set; }
-		[XmlIgnore][Units("g/m2")]// Description: Total standing DM (Leaf + Stem/Sheath) after cut
-		public double PostHarvestDM { get; set; }
-		
-		// - Internal variables
-		// fraction of harvested Dm to actually remove from field
-		private double fractionDM2Remove = 1.0;
-		// flag whether defoliation is allowed
-		private bool rotationAllowed = true;
-		// number of days for each defoliation event
-		private int cuttingDuration = 0;
-		// counter for day within each defoliation
-		private int daysCutting = 0;
-		// type of interval (Fixed or target)
-		private string intervalType;
-		// total herbage to remove in g/m2 per day
-		private double herbageToRemove;
-		// type of DM amount (ResidualDM or DMToRemove)
-		private string amountType;
-		// auxiliary flag for defoliation
-		private bool aCutHasHappened = false;
-
-		// - Event to add residue or dung to surface OM
-		public event BiomassRemovedDelegate BiomassRemoved;
-
-		[EventSubscribe("Commencing")]
-		private void OnSimulationCommencing(object sender, EventArgs e)
-		{
-			foreach (AgPasture.PastureSpecies species in Apsim.Children(myZone, typeof(AgPasture.PastureSpecies)))
-			{
-				Pasture.Add(species);
-			}
-
-			// reset variables
-			DaysAfterCut = 0;
-			resetVariables();
-			cuttingDuration = DurationOfCut;
-			
-			// get the type of amount given
-			if (RemoveAmountType == removeAmountTypes.ResidualDM)
-				amountType = "SetResidueAmount";
-			else
-				amountType = "SetRemoveAmount";
-
-			// get the type of amount given
-			if (IntervalType == rotationIntervalTypes.FixedInterval)
-				intervalType = "Fixed";
-			else
-				intervalType = "Target";
-
-			// make sure that rotation start when startDate < simulationStartDay
-			if ((Clock.Today > CutRotationStartDate) && (Clock.Today < CutRotationEndDate))
-				CutRotationStartDate = Clock.Today;
-		}
-		
-		[EventSubscribe("DoManagement")]
-		private void OnDoManagement(object sender, EventArgs e)
-		{
-			if (rotationAllowed)
-			{
-				if (Clock.Today == CutRotationStartDate)
-					DaysAfterCut = CutInterval;
-
-				// Check whether we can defoliate
-				if ((Clock.Today >= CutRotationStartDate) && (Clock.Today <= CutRotationEndDate) && (Pasture[0].IsAlive))
-				{
-					// Check whether we should start a defoliation
-					if (DaysAfterCut >= (CutInterval - 1))
-					{
-						Graze(AmountGiven, amountType, DurationOfCut);
-					}
-				}
-			}
-
-			// Check whether we need to continue cutting
-			if ((daysCutting > 0) && (daysCutting < cuttingDuration))
-			{
-				// reset outputs
-				resetVariables();
-
-				removeDM(herbageToRemove);
-				returnExcreta();
-				daysCutting += 1;
-				if (daysCutting == cuttingDuration)
-					PostHarvestDM = Pasture[0].StandingHerbageWt; //+ Pasture[1].StandingHerbageWt
-			}
-
-			// reset outputs
-			if (daysCutting < 0)
-			{
-				resetVariables();
-				daysCutting = 0;
-			}
-		}
-
-		[EventSubscribe("DoManagementCalculations")]
-		private void OnDoManagementCalculations(object sender, EventArgs e)
-		{
-			// Check whether a cutting has finished
-			if (daysCutting == cuttingDuration)
-			{
-				aCutHasHappened = true;
-				daysCutting = -1;
-			}
-
-			// Increase the counter for days after cutting
-			if (aCutHasHappened && (daysCutting == 0))
-				DaysAfterCut += 1;
-		}
-
-		public enum removeAmountTypes
-		{
-			/// <summary>Setting DM amount to remove</summary>
-			DMToRemove,
-			/// <summary>Setting residual DM amount</summary>
-			ResidualDM
-		}
-
-		public enum rotationIntervalTypes
-		{
-			/// <summary>Setting a fixed interval</summary>
-			FixedInterval,
-			/// <summary>Setting a target (minimum) inteval</summary>
-			TargetInterval
-		}
-
-		public enum removeDMTypes
-		{
-			/// <summary>Remove all DM</summary>
-			RemoveAll,
-			/// <summary>Remove no DM</summary>
-			RemoveNone,
-			/// <summary>Remove a fraction based on digestibility</summary>
-			BasedOnDigestibility
-		}
-
-		// Resets the values of all outputs
-		private void resetVariables()
-		{
-			DefoliatedWt = 0.0;
-			DefoliatedN = 0.0;
-			HarvestedWt = 0.0;
-			HarvestedN = 0.0;
-			RemovedWt = 0.0;
-			RemovedN = 0.0;
-			ReturnedWt = 0.0;
-			ReturnedN = 0.0;
-			NReturnedInDung = 0.0;
-			NReturnedInUrine = 0.0;
-		}
-
-		// Description: Perform the basic calculations for defoliation
-		public void Graze(double amountDM, string amountType, int duration)
-		{
-			// Get the existing plant amount
-			PreHarvestDM = Pasture[0].StandingHerbageWt;  //+ Pasture[1].StandingHerbageWt
-			
-			// Check the amount to remove and print some info
-			if ((amountType == "SetRemoveAmount") && (PreHarvestDM >= amountDM / duration))
-			{
-				summary.WriteMessage(this, "   Defoliating " + (10 * amountDM).ToString("#0.0") + "kg/ha over " + duration + " days");
-				herbageToRemove = amountDM / duration;
-			}
-			else if ((amountType == "SetResidueAmount") && (PreHarvestDM >= amountDM))
-			{
-				summary.WriteMessage(this, "   Defoliating down to approximately " + (10 * amountDM).ToString("#0.0") + "kg/ha over " + duration + " days");
-				herbageToRemove = (PreHarvestDM - amountDM) / duration;
-			}
-			else
-			{
-				summary.WriteMessage(this, "   Defoliation will not happend because there is not enough plant material");
-				if (intervalType == "Fixed")
-					DaysAfterCut = -duration;
-				return;
-			}
-
-			cuttingDuration = duration;
-			// Preform first defoliation
-			removeDM(herbageToRemove);
-			returnExcreta();
-			daysCutting = 1;
-			DaysAfterCut = 0;
-			if (daysCutting == cuttingDuration)
-				PostHarvestDM = Pasture[0].StandingHerbageWt;  //+ Pasture[1].StandingHerbageWt
-		}
-
-		// Do the DM removal
-		private void removeDM(double removeAmount)
-		{
-			double existingWt = Pasture[0].HarvestableWt;  // + Pasture[1].HarvestableWt
-
-			// Check whether we harvest anything
-			if (existingWt >= removeAmount)
-			{
-				foreach (AgPasture.PastureSpecies species in Pasture)
-				{
-					double amountToRemove = removeAmount * species.HarvestableWt / existingWt;
-					species.Graze(amount: amountToRemove, type: "SetRemoveAmount");
-				}
-				
-				// get total harvested
-				DefoliatedWt = Pasture[0].HarvestedWt;  // + Pasture[1].HarvestedWt
-				DefoliatedN = Pasture[0].HarvestedN;  //+ Pasture[1].HarvestedN
-				HarvestedWt = DefoliatedWt;
-				HarvestedN = DefoliatedN;
-
-				// get amounts actually removed from field and that to be returned (dung/urine)
-				if (DMRemoveType == removeDMTypes.RemoveAll)
-					fractionDM2Remove = 1.0;
-				else if (DMRemoveType == removeDMTypes.RemoveNone)
-					fractionDM2Remove = 0.0;
-				else
-				{
-					fractionDM2Remove = Pasture[0].HarvestedDigestibility * Pasture[0].HarvestedWt;  //+ Pasture[1].HarvestedDigestibility * Pasture[1].HarvestedWt
-					fractionDM2Remove /= removeAmount;
-				}
-				
-				RemovedWt = HarvestedWt * fractionDM2Remove;
-				RemovedN = HarvestedN * FractionN2Remove;
-				ReturnedWt = HarvestedWt - RemovedWt;
-				ReturnedN = HarvestedN - RemovedN;
-				NReturnedInDung = ReturnedN * ProportionN2Dung;
-				NReturnedInUrine = ReturnedN - NReturnedInDung;
-			}
-		}
-
-		// Return dung and urine
-		private void returnExcreta()
-		{
-			if ((ReturnedWt > 0.0) || (NReturnedInDung > 0.0))
-			{
-				PMF.BiomassRemovedType BiomassDung = new PMF.BiomassRemovedType();
-				string[] type = new string[] { "RuminantDung_PastureFed" };
-				float[] dltdm = new float[] { (Single)ReturnedWt };
-				float[] dltn = new float[] { (Single)NReturnedInDung };
-				float[] dltp = new float[] { 0 };
-				float[] fraction = new float[] { 1 };     // fraction is always 1.0 here
-
-				BiomassDung.crop_type = "RuminantDung_PastureFed";
-				BiomassDung.dm_type = type;
-				BiomassDung.dlt_crop_dm = dltdm;
-				BiomassDung.dlt_dm_n = dltn;
-				BiomassDung.dlt_dm_p = dltp;
-				BiomassDung.fraction_to_residue = fraction;
-				BiomassRemoved.Invoke(BiomassDung);
-			}
-
-			if (NReturnedInUrine > 0.0)
-			{
-				fertiliser.Apply(NReturnedInUrine * 10, Fertiliser.Types.UreaN, 1.0);
-			}
-		}
-	}
-}
-]]></Code>
-        </Manager>
         <Manager>
           <Name>AutomaticFertiliser</Name>
           <Script>
@@ -17432,18 +17232,11 @@ namespace Models
         <ExperimentFactorValues />
         <VariableNames>
           <string>[Clock].Today as Date</string>
-          <string>[Ryegrass].AboveGroundWt as PlantMass</string>
-          <string>[Ryegrass].HarvestedWt as Harvested</string>
-          <string>[Ryegrass].WaterDemand as SW_Demand</string>
-          <string>[Ryegrass].DemandAtOptimumN as N_Demand</string>
-          <string>sum([Ryegrass].WaterUptake) as SW_Uptake</string>
-          <string>sum([Ryegrass].SoilNO3Uptake) as N_Uptake</string>
-          <string>[Ryegrass].GlfWaterSupply as glfWater</string>
-          <string>[Ryegrass].GlfNSupply as glfNitrogen</string>
           <string>sum([Soil].SoilWater.SWmm) as SoilWater</string>
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
           <string>[Clock].EndOfDay</string>
@@ -18139,6 +17932,7 @@ namespace Models
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
           <string>[Clock].EndOfDay</string>
