@@ -17579,10 +17579,6 @@ namespace Models
 		{
 			if (Clock.Today.Date == Clock.StartDate)
 			{
-				Slurp1.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);
-				if (NumSlurps > 1)
-					Slurp2.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);	
-					
 				Slurp1.Root.ZoneNamesToGrowRootsIn.Add("Zone1");
 				//Slurp.Root.ZoneNamesToGrowRootsIn.Add("Zone3");
 				Slurp1.Root.ZoneRootDepths.Add(300);
@@ -17590,6 +17586,10 @@ namespace Models
 				Slurp1.Root.ZoneInitialDM.Add(1000);
 				//Slurp.Root.ZoneInitialDM.Add(1000);
 
+				Slurp1.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);
+				if (NumSlurps > 1)
+					Slurp2.Sow(cultivar: CultivarName, population: 1, depth: InitialRootDepth, rowSpacing: 100);	
+					
 					
 					
 			}
