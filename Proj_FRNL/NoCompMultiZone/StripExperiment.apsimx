@@ -12061,102 +12061,12 @@ namespace Models
 ]]></Code>
     </Manager>
     <Manager>
-      <Name>DoFertMultiZoneGod</Name>
+      <Name>DoFertMultiZoneGod_old</Name>
       <Script>
-        <DateFert2Add>0001-01-01</DateFert2Add>
-        <ZoneFert2Add>Z01</ZoneFert2Add>
-        <AmtFert2Add>1000</AmtFert2Add>
-      </Script>
-      <Code><![CDATA[using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using Models.Core;
-using Models.PMF;
-using APSIM.Shared.Utilities;
-
-namespace Models
-{
-	[Serializable]
-	public class Script : Model
-	{
-		[Link] Summary Summary;
-		[Link] Clock Clock;
-		//[Link] Weather Weather;
-		[Link] Simulation Simulation;
-		
-		// - Paramters for this manager
-		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
-		[Description("Zone to add fertiliser: ")] public string ZoneFert2Add { get; set; }
-		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
-
-		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
-
-		
-		//public double[] Today_PatchIrrigation { get; set; }
-
-		//Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-		//fertiliser.Apply(Amount: Fert_rate, Depth: Fert_depth, Type: Fertiliser.Types.NO3N);
-
-
-        
-		private Zone[] Zones { get; set; }
-		
-
-
-		[EventSubscribe("Commencing")] private void OnSimulationCommencing(object sender, EventArgs e)
-		{
-			// Set up our list of zones in the simulation
-			List<Zone> zones = new List<Zone>();
-			foreach (Zone zone in Apsim.FindAll(this.Parent, typeof(Zone)))
-				zones.Add(zone as Zone);
-			Zones = zones.ToArray();
-			
-			
-			//ZoneNames = strZoneNames.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-			string[] ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
-			// find where I am in this array
-			int MyZoneNum = Array.IndexOf(ZoneNames, ZoneFert2Add);
-			
-			
-			//double[] PaddedRootProps = new double[3] { 100.0, 0.0, 100.0 };
-               
-			//Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-			//Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
-			
-			//AgPasture.PastureSpecies agpasture = Apsim.Find(Zones[1], typeof(AgPasture.PastureSpecies)) as AgPasture.PastureSpecies;
-			//agpasture.AddZone(zoneName: ZoneNames[0], rootDepth: PaddedRootProps[0] * RootDepth, rootDM: PaddedRootProps[0] * RootMass, specificRootLength: 100);
-			//agpasture.AddZone(zoneName: ZoneNames[2], rootDepth: PaddedRootProps[2] * RootDepth, rootDM: PaddedRootProps[2] * RootMass, specificRootLength: 100);
-
-			for (int i = 0; i < Zones.Length; i++)
-			{
-				if (i == MyZoneNum)
-				{
-					Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-					fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
-					
-				}
-			} 
-		}
-        
-		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
-		{
-			
-		}
-		
-		
-		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
-		{
-		}
-	}
-}
-]]></Code>
-    </Manager>
-    <Manager>
-      <Name>DoFertMultiZoneGod1</Name>
-      <Script>
-        <DateFert2Add>2000-01-01</DateFert2Add>
+        <DateFert2Add>2000-01-05</DateFert2Add>
         <strZonesFert2Add>Z0 Z02</strZonesFert2Add>
         <AmtFert2Add>1000</AmtFert2Add>
+        <DepthFert2Add>500</DepthFert2Add>
       </Script>
       <Code><![CDATA[using System;
 using System.Collections.Generic;
@@ -12164,6 +12074,9 @@ using System.Xml.Serialization;
 using Models.Core;
 using Models.PMF;
 using APSIM.Shared.Utilities;
+using Models.Soils;
+
+// This is working OK with Val's modifications to Fertiliser and SoluteManager - without these all the fertiliser goes into the top layer
 
 namespace Models
 {
@@ -12174,23 +12087,29 @@ namespace Models
 		[Link] Clock Clock;
 		//[Link] Weather Weather;
 		[Link] Simulation Simulation;
+		
 		
 		// - Paramters for this manager
 		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
 		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
 		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+		[Description("Spread the N from the surface to a depth of (mm): ")]  public double DepthFert2Add { get; set; }
 
+		// DepthFert2Add is working if I modify Fertiliser and SoluteManager
+	
 		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
 
 		private Zone[] Zones { get; set; }
 		public string[] ZonesFert2Add;
+		string[] ZoneNames;
 
 		[EventSubscribe("Commencing")] private void OnSimulationCommencing(object sender, EventArgs e)
 		{
 			ZonesFert2Add = strZonesFert2Add.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
 			// this will get replaced with an auto-population of the names
-			string[] ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
+			ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
 		}
+		//Commencing
         
 		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
 		{
@@ -12200,32 +12119,62 @@ namespace Models
 				zones.Add(zone as Zone);
 			Zones = zones.ToArray();
 			
-			for (int i = 0; i < Zones.Length; i++)
-			{
-				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
-				{
-					if (ZoneNames[i] == ZonesFert2Add[ii])
-					{
-						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-						fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
-					}
-				}
-			} 
 		}
+		//StartOfSimulation
 		
 		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
 		{
+			if (Clock.Today == DateFert2Add)
+			{
+				for (int i = 0; i < Zones.Length; i++)
+				{
+					for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
+					{
+						if (ZoneNames[i] == ZonesFert2Add[ii])
+						{
+							Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+							Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
+							//SoluteManager fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
+							
+							double PropFertAllocated = 0.0;
+							double PropFert2Add = 0.0;
+							double[] CumDepth = new double[soil.SoilWater.dlayer.Length];
+						
+							CumDepth[0] = soil.SoilWater.dlayer[0];
+							for (int j = 1; j < soil.SoilWater.dlayer.Length; j++)
+								CumDepth[j] = CumDepth[j - 1] + soil.SoilWater.dlayer[j];
+
+							for (int j = 0; j < soil.SoilWater.dlayer.Length; j++)
+							{
+								if (CumDepth[j] <= DepthFert2Add)
+									PropFert2Add = soil.SoilWater.dlayer[j] / DepthFert2Add;
+								else
+									PropFert2Add = Math.Max(0.0, (1.0 - PropFertAllocated));
+								PropFertAllocated += PropFert2Add;
+								fertiliser.Apply(Amount: AmtFert2Add * PropFert2Add, 
+									Depth: CumDepth[j] - soil.SoilWater.dlayer.Length / 2, 
+									Type: Fertiliser.Types.NO3N);
+							}
+							//fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
+						}
+					}
+				} 
+			}
 		}
+		//DoManagement
 	}
+	// this Script
 }
+//this Model
 ]]></Code>
     </Manager>
     <Manager>
-      <Name>DoFertMultiZoneGod2</Name>
+      <Name>AddUrineMultiZoneGod</Name>
       <Script>
-        <DateFert2Add>2000-01-01</DateFert2Add>
+        <DateFert2Add>2000-01-05</DateFert2Add>
         <strZonesFert2Add>Z0 Z02</strZonesFert2Add>
         <AmtFert2Add>1000</AmtFert2Add>
+        <DepthFert2Add>500</DepthFert2Add>
       </Script>
       <Code><![CDATA[using System;
 using System.Collections.Generic;
@@ -12233,6 +12182,9 @@ using System.Xml.Serialization;
 using Models.Core;
 using Models.PMF;
 using APSIM.Shared.Utilities;
+using Models.Soils;
+
+// This is working OK with Val's modifications to Fertiliser and SoluteManager - without these all the fertiliser goes into the top layer
 
 namespace Models
 {
@@ -12244,10 +12196,12 @@ namespace Models
 		//[Link] Weather Weather;
 		[Link] Simulation Simulation;
 		
+		
 		// - Paramters for this manager
-		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
-		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
-		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+		[Description("Date to add the urine (urea): ")] public DateTime DateFert2Add { get; set; }
+		[Description("Zones to add urea: ")] public string strZonesFert2Add { get; set; }
+		[Description("Amount of urine-N to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+		[Description("Spread the urine from the surface to a depth of (mm): ")]  public double DepthFert2Add { get; set; }
 
 		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
 
@@ -12261,6 +12215,7 @@ namespace Models
 			// this will get replaced with an auto-population of the names
 			ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
 		}
+		//Commencing
         
 		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
 		{
@@ -12270,24 +12225,52 @@ namespace Models
 				zones.Add(zone as Zone);
 			Zones = zones.ToArray();
 			
-			for (int i = 0; i < Zones.Length; i++)
-			{
-				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
-				{
-					if (ZoneNames[i] == ZonesFert2Add[ii])
-					{
-						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-						fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
-					}
-				}
-			} 
 		}
+		//StartOfSimulation
 		
 		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
 		{
+			if (Clock.Today == DateFert2Add)
+			{
+				for (int i = 0; i < Zones.Length; i++)
+				{
+					for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
+					{
+						if (ZoneNames[i] == ZonesFert2Add[ii])
+						{
+							Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
+							SoluteManager solutemanager = Apsim.Find(Zones[i], typeof(SoluteManager)) as SoluteManager;
+							
+							double PropFertAllocated = 0.0;
+							double PropFert2Add = 0.0;
+							double[] CumDepth = new double[soil.SoilWater.dlayer.Length];
+							double[] arrFert2Add = new double[soil.SoilWater.dlayer.Length];
+						
+							CumDepth[0] = soil.SoilWater.dlayer[0];
+							for (int j = 1; j < soil.SoilWater.dlayer.Length; j++)
+								CumDepth[j] = CumDepth[j - 1] + soil.SoilWater.dlayer[j];
+
+							for (int j = 0; j < soil.SoilWater.dlayer.Length; j++)
+							{
+								if (CumDepth[j] <= DepthFert2Add)
+									PropFert2Add = soil.SoilWater.dlayer[j] / DepthFert2Add;
+								else
+									PropFert2Add = Math.Max(0.0, (1.0 - PropFertAllocated));
+								PropFertAllocated += PropFert2Add;
+								arrFert2Add[j] = PropFert2Add * AmtFert2Add;
+								//Summary.WriteMessage(this, "for " + ZoneNames[i] + " layer " + j + " PropFert2Add " + PropFert2Add + " and arrFert2Add[j] " + arrFert2Add[j]);
+							}
+							solutemanager.Add(name: "urea", delta: arrFert2Add);
+						}
+					}
+				} 
+			}
 		}
+//DoManagement
 	}
+// this Script
 }
+//this Model
 ]]></Code>
     </Manager>
   </Folder>
@@ -15609,7 +15592,7 @@ namespace Models
     <Clock>
       <Name>Clock</Name>
       <StartDate>2000-01-01T00:00:00</StartDate>
-      <EndDate>2000-01-01T00:00:00</EndDate>
+      <EndDate>2000-01-10T00:00:00</EndDate>
     </Clock>
     <ControlledEnvironment>
       <Name>ControlledEnvironment</Name>
@@ -15632,12 +15615,12 @@ namespace Models
       <Name>Summary</Name>
     </Summary>
     <Manager>
-      <Name>DoFertMultiZoneGod</Name>
+      <Name>AddUrineMultiZoneGod</Name>
       <Script>
-        <DateFert2Add>2000-01-01</DateFert2Add>
-        <strZonesFert2Add>Z0</strZonesFert2Add>
-        <AmtFert2Add>100</AmtFert2Add>
-        <DepthFert2Add>450</DepthFert2Add>
+        <DateFert2Add>2000-01-05</DateFert2Add>
+        <strZonesFert2Add>Z0 Z02</strZonesFert2Add>
+        <AmtFert2Add>1000</AmtFert2Add>
+        <DepthFert2Add>500</DepthFert2Add>
       </Script>
       <Code><![CDATA[using System;
 using System.Collections.Generic;
@@ -15646,6 +15629,8 @@ using Models.Core;
 using Models.PMF;
 using APSIM.Shared.Utilities;
 using Models.Soils;
+
+// This is working OK with Val's modifications to Fertiliser and SoluteManager - without these all the fertiliser goes into the top layer
 
 namespace Models
 {
@@ -15657,11 +15642,12 @@ namespace Models
 		//[Link] Weather Weather;
 		[Link] Simulation Simulation;
 		
+		
 		// - Paramters for this manager
-		[Description("Date to add the fertiliser: ")] public DateTime DateFert2Add { get; set; }
-		[Description("Zone to add fertiliser: ")] public string strZonesFert2Add { get; set; }
-		[Description("Amount of fertiliser to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
-		[Description("Spread the N from the surface to a depth of (mm): ")]  public double DepthFert2Add { get; set; }
+		[Description("Date to add the urine (urea): ")] public DateTime DateFert2Add { get; set; }
+		[Description("Zones to add urea: ")] public string strZonesFert2Add { get; set; }
+		[Description("Amount of urine-N to add (kg N /ha): ")]  public double AmtFert2Add { get; set; }
+		[Description("Spread the urine from the surface to a depth of (mm): ")]  public double DepthFert2Add { get; set; }
 
 		// Zm9 Zm8 Zm7 Zm6 Zm5 Zm4 Zm3 Zm2 Zm1 Z0 Zp1 Zp2 Zp3 Zp4 Zp5 Zp6 Zp7 Zp8 Zp9
 
@@ -15675,6 +15661,7 @@ namespace Models
 			// this will get replaced with an auto-population of the names
 			ZoneNames = new string[3] { "Z0", "Z01", "Z02" };
 		}
+		//Commencing
         
 		[EventSubscribe("StartOfSimulation")] private void DoStartOfSimulation(object sender, EventArgs e)
 		{
@@ -15684,57 +15671,52 @@ namespace Models
 				zones.Add(zone as Zone);
 			Zones = zones.ToArray();
 			
-			for (int i = 0; i < Zones.Length; i++)
-			{
-				for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
-				{
-					if (ZoneNames[i] == ZonesFert2Add[ii])
-					{
-						Fertiliser fertiliser = Apsim.Find(Zones[i], typeof(Fertiliser)) as Fertiliser;
-						Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
-						
-						double PropFertAdded = 0.0;
-						double[] CumDepth = new double[soil.SoilWater.dlayer.Length];
-						CumDepth[0] = soil.SoilWater.dlayer[0];
-						for (int j = 0; j < soil.SoilWater.dlayer.Length; j++)
-						{
-							double Prop2Add = 0.0;
-							if (j == 0)
-								CumDepth[j] = soil.SoilWater.dlayer[j];
-							else
-								CumDepth[j] = CumDepth[j - 1] + soil.SoilWater.dlayer[j];
-
-							if (CumDepth[j] <= DepthFert2Add)
-							{
-								if (j == 0)
-									Prop2Add = soil.SoilWater.dlayer[j] / DepthFert2Add;
-								else
-									Prop2Add = (CumDepth[j] - CumDepth[j - 1]) / DepthFert2Add;
-								PropFertAdded += Prop2Add;
-							}
-							else
-							{
-								Prop2Add = (1.0 - PropFertAdded);
-								PropFertAdded += Prop2Add;
-							}
-							if (Prop2Add > 0.0)
-							{
-								fertiliser.Apply(Amount: AmtFert2Add * Prop2Add, Depth: (CumDepth[j] - soil.SoilWater.dlayer[j] / 2.0), Type: Fertiliser.Types.NO3N);
-							}
-						}
-
-						
-						//fertiliser.Apply(Amount: AmtFert2Add, Depth: 10.0, Type: Fertiliser.Types.NO3N);
-					}
-				}
-			} 
 		}
+		//StartOfSimulation
 		
 		[EventSubscribe("DoManagement")] private void DoManagement(object sender, EventArgs e)
 		{
+			if (Clock.Today == DateFert2Add)
+			{
+				for (int i = 0; i < Zones.Length; i++)
+				{
+					for (int ii = 0; ii < ZonesFert2Add.Length; ii++)
+					{
+						if (ZoneNames[i] == ZonesFert2Add[ii])
+						{
+							Soil soil = Apsim.Find(Zones[i], typeof(Soil)) as Soil;
+							SoluteManager solutemanager = Apsim.Find(Zones[i], typeof(SoluteManager)) as SoluteManager;
+							
+							double PropFertAllocated = 0.0;
+							double PropFert2Add = 0.0;
+							double[] CumDepth = new double[soil.SoilWater.dlayer.Length];
+							double[] arrFert2Add = new double[soil.SoilWater.dlayer.Length];
+						
+							CumDepth[0] = soil.SoilWater.dlayer[0];
+							for (int j = 1; j < soil.SoilWater.dlayer.Length; j++)
+								CumDepth[j] = CumDepth[j - 1] + soil.SoilWater.dlayer[j];
+
+							for (int j = 0; j < soil.SoilWater.dlayer.Length; j++)
+							{
+								if (CumDepth[j] <= DepthFert2Add)
+									PropFert2Add = soil.SoilWater.dlayer[j] / DepthFert2Add;
+								else
+									PropFert2Add = Math.Max(0.0, (1.0 - PropFertAllocated));
+								PropFertAllocated += PropFert2Add;
+								arrFert2Add[j] = PropFert2Add * AmtFert2Add;
+								//Summary.WriteMessage(this, "for " + ZoneNames[i] + " layer " + j + " PropFert2Add " + PropFert2Add + " and arrFert2Add[j] " + arrFert2Add[j]);
+							}
+							solutemanager.Add(name: "urea", delta: arrFert2Add);
+						}
+					}
+				} 
+			}
 		}
+//DoManagement
 	}
+// this Script
 }
+//this Model
 ]]></Code>
     </Manager>
     <Zone>
@@ -16424,6 +16406,8 @@ namespace Models
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.urea</string>
+          <string>[Soil].SoilNitrogen.NH4</string>
           <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
@@ -17236,6 +17220,8 @@ namespace Models
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.urea</string>
+          <string>[Soil].SoilNitrogen.NH4</string>
           <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
@@ -17932,6 +17918,8 @@ namespace Models
           <string>sum([Soil].SoilNitrogen.NH4)+sum([Soil].SoilNitrogen.NO3) as SoilNitrogen</string>
           <string>[Irrigation].IrrigationApplied as Irrigation</string>
           <string>[Fertiliser].NitrogenApplied as Fertiliser</string>
+          <string>[Soil].SoilNitrogen.urea</string>
+          <string>[Soil].SoilNitrogen.NH4</string>
           <string>[Soil].SoilNitrogen.NO3</string>
         </VariableNames>
         <EventNames>
