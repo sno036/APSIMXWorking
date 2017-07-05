@@ -9444,6 +9444,616 @@ The series of simulations add some roots from the ryegrass in Zone0 into Zone1 s
 The graphs show that these expectations are met.
 ]]></MemoText>
       </Memo>
+      <Graph>
+        <Name>PlantWt</Name>
+        <Series>
+          <Name>Ryegrass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>PlantMass</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>2600</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>Harvested</Name>
+        <Series>
+          <Name>Ryegrass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>Harvested</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>true</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>WaterDemand</Name>
+        <Series>
+          <Name>Demand</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SW_Demand</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>5</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>WaterUptake</Name>
+        <Series>
+          <Name>Uptake</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-1663232</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SW_Uptake</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>5</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>WaterStress</Name>
+        <Series>
+          <Name>Ryegrass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>glfWater</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>1.05</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>NStress</Name>
+        <Series>
+          <Name>Ryegrass</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>glfNitrogen</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>1.05</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>SoilWaterZone0</Name>
+        <Series>
+          <Name>Water</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SoilWater</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone0'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>50</Minimum>
+          <Maximum>275</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>SoilWaterZone1</Name>
+        <Series>
+          <Name>Water</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SoilWater</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone1'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>50</Minimum>
+          <Maximum>275</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>SoilNitrogenZone1</Name>
+        <Series>
+          <Name>Nitrogen</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SoilNitrogen</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone1'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>150</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>SoilNitrogenZone0</Name>
+        <Series>
+          <Name>Nitrogen</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>SoilNitrogen</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>false</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone0'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>150</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>IrrigationAppliedZone0</Name>
+        <Series>
+          <Name>Irrigation</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>Irrigation</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>true</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone0'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>2000</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>IrrigationAppliedZone1</Name>
+        <Series>
+          <Name>Irrigation</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>Irrigation</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>true</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone1'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>2000</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>FertiliserAppliedZone0</Name>
+        <Series>
+          <Name>Fertiliser</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>Fertiliser</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>true</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone0'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>2300</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
+      <Graph>
+        <Name>FertiliserAppliedZone1</Name>
+        <Series>
+          <Name>Fertiliser</Name>
+          <IncludeInDocumentation>true</IncludeInDocumentation>
+          <Type>Scatter</Type>
+          <XAxis>Bottom</XAxis>
+          <YAxis>Left</YAxis>
+          <ColourArgb>-16736653</ColourArgb>
+          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
+          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
+          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
+          <Marker>None</Marker>
+          <MarkerSize>Normal</MarkerSize>
+          <Line>Solid</Line>
+          <LineThickness>Normal</LineThickness>
+          <TableName>TestWithNoStress</TableName>
+          <XFieldName>Date</XFieldName>
+          <YFieldName>Fertiliser</YFieldName>
+          <ShowInLegend>true</ShowInLegend>
+          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
+          <Cumulative>true</Cumulative>
+          <CumulativeX>false</CumulativeX>
+          <Filter>[Zone] = 'Zone1'</Filter>
+        </Series>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <Axis>
+          <Type>Left</Type>
+          <Title />
+          <Inverted>false</Inverted>
+          <Minimum>0</Minimum>
+          <Maximum>2300</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <Axis>
+          <Type>Bottom</Type>
+          <Inverted>false</Inverted>
+          <Minimum>NaN</Minimum>
+          <Maximum>NaN</Maximum>
+          <Interval>NaN</Interval>
+        </Axis>
+        <LegendPosition>TopRight</LegendPosition>
+        <DisabledSeries />
+      </Graph>
       <Experiment>
         <Name>Experiment</Name>
         <Factors>
@@ -9496,10 +10106,10 @@ The graphs show that these expectations are met.
                 <Name>DoRootsSingle</Name>
                 <IncludeInDocumentation>true</IncludeInDocumentation>
                 <Script>
+                  <Zone1Prop>0</Zone1Prop>
                   <Zone0Depth>600</Zone0Depth>
                   <Zone0Mass>500</Zone0Mass>
                   <Zone1Name>Zone1</Zone1Name>
-                  <Zone1Prop>0</Zone1Prop>
                   <Zone2Name>Zone2</Zone2Name>
                   <Zone2Prop>0</Zone2Prop>
                   <Zone3Name>Zone3</Zone3Name>
@@ -11497,6 +12107,32 @@ namespace Models
         </Simulation>
         <IncludeInDocumentation>true</IncludeInDocumentation>
       </Experiment>
+      <IncludeInDocumentation>true</IncludeInDocumentation>
+      <ShowPageOfGraphs>true</ShowPageOfGraphs>
+    </Folder>
+    <Folder>
+      <Name>Test With Water Stress</Name>
+      <Memo>
+        <Name>Memo TestWithWaterStress</Name>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <MemoText><![CDATA[This series of simulations are as for the ‘No Stress’ series except there is no irrigation (fertiliser remains turned on).  There is also no rainfall so this is a run-down experiment.  The expectation is that as more roots are spread into Zone1 that:
+•	The plant can access more water so more dry matter will be harvested and, later on when there is insufficient stored soil water, senescence will be slower;
+
+•	Water demand and water uptake will be maintained for longer;
+
+•	Water stress will be later and less severe for a while;
+
+•	There will be no N stress because fertiliser is applied as needed;
+
+•	The soil water in Zone0 will be depleted more slowly while the soil water in Zone1 will be depleted more quickly;
+
+•	Soil nitrogen will be unaffected; and 
+
+•	Less fertiliser will be applied in Zone0 and more in Zone1.
+
+These expectations are met.  It seems likely that the fluctuations in soil N storage are due to the size of each fertiliser addition (50 kg N /ha).
+]]></MemoText>
+      </Memo>
       <Graph>
         <Name>PlantWt</Name>
         <Series>
@@ -11513,7 +12149,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>PlantMass</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11521,7 +12157,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11556,7 +12192,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Harvested</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11564,7 +12200,7 @@ namespace Models
           <Cumulative>true</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11599,7 +12235,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SW_Demand</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11607,7 +12243,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11642,7 +12278,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SW_Uptake</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11650,7 +12286,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11685,7 +12321,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>glfWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11693,7 +12329,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11728,7 +12364,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>glfNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11736,7 +12372,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11771,7 +12407,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11780,7 +12416,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11815,7 +12451,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11824,7 +12460,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11859,7 +12495,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11868,7 +12504,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11903,7 +12539,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11912,7 +12548,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11947,7 +12583,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Irrigation</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -11956,7 +12592,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -11991,7 +12627,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Irrigation</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -12000,7 +12636,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -12035,7 +12671,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Fertiliser</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -12044,13 +12680,13 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
           <Inverted>false</Inverted>
           <Minimum>0</Minimum>
-          <Maximum>2300</Maximum>
+          <Maximum>300</Maximum>
           <Interval>NaN</Interval>
         </Axis>
         <Axis>
@@ -12079,7 +12715,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNoStress</TableName>
+          <TableName>TestWithWaterStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Fertiliser</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -12088,13 +12724,13 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
           <Inverted>false</Inverted>
           <Minimum>0</Minimum>
-          <Maximum>2300</Maximum>
+          <Maximum>300</Maximum>
           <Interval>NaN</Interval>
         </Axis>
         <Axis>
@@ -12107,32 +12743,6 @@ namespace Models
         <LegendPosition>TopRight</LegendPosition>
         <DisabledSeries />
       </Graph>
-      <IncludeInDocumentation>true</IncludeInDocumentation>
-      <ShowPageOfGraphs>true</ShowPageOfGraphs>
-    </Folder>
-    <Folder>
-      <Name>Test With Water Stress</Name>
-      <Memo>
-        <Name>Memo TestWithWaterStress</Name>
-        <IncludeInDocumentation>true</IncludeInDocumentation>
-        <MemoText><![CDATA[This series of simulations are as for the ‘No Stress’ series except there is no irrigation (fertiliser remains turned on).  There is also no rainfall so this is a run-down experiment.  The expectation is that as more roots are spread into Zone1 that:
-•	The plant can access more water so more dry matter will be harvested and, later on when there is insufficient stored soil water, senescence will be slower;
-
-•	Water demand and water uptake will be maintained for longer;
-
-•	Water stress will be later and less severe for a while;
-
-•	There will be no N stress because fertiliser is applied as needed;
-
-•	The soil water in Zone0 will be depleted more slowly while the soil water in Zone1 will be depleted more quickly;
-
-•	Soil nitrogen will be unaffected; and 
-
-•	Less fertiliser will be applied in Zone0 and more in Zone1.
-
-These expectations are met.  It seems likely that the fluctuations in soil N storage are due to the size of each fertiliser addition (50 kg N /ha).
-]]></MemoText>
-      </Memo>
       <Experiment>
         <Name>Experiment</Name>
         <Factors>
@@ -12185,10 +12795,10 @@ These expectations are met.  It seems likely that the fluctuations in soil N sto
                 <Name>DoRootsSingle</Name>
                 <IncludeInDocumentation>true</IncludeInDocumentation>
                 <Script>
+                  <Zone1Prop>0</Zone1Prop>
                   <Zone0Depth>600</Zone0Depth>
                   <Zone0Mass>500</Zone0Mass>
                   <Zone1Name>Zone1</Zone1Name>
-                  <Zone1Prop>0</Zone1Prop>
                   <Zone2Name>Zone2</Zone2Name>
                   <Zone2Prop>0</Zone2Prop>
                   <Zone3Name>Zone3</Zone3Name>
@@ -14186,6 +14796,33 @@ namespace Models
         </Simulation>
         <IncludeInDocumentation>true</IncludeInDocumentation>
       </Experiment>
+      <IncludeInDocumentation>true</IncludeInDocumentation>
+      <ShowPageOfGraphs>true</ShowPageOfGraphs>
+    </Folder>
+    <Folder>
+      <Name>Test With Nitrogen Stress</Name>
+      <Memo>
+        <Name>Memo TestWithNitrogenStress</Name>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
+        <MemoText><![CDATA[This series of simulations are as for the ‘No Stress’ series except there is no fertiliser (irrigation remains turned on).  There is also no soil organic matter or initial mineral N so this is a run-down experiment.  The expectation is that as more roots are spread into Zone1 that:
+•	The plant can access more N so more dry matter will be harvested and, later on when there is insufficient stored N, senescence will be slower;
+
+•	Water demand and water uptake will be maintained for longer;
+
+•	There will be no water stress;
+
+•	N stress will be delayed and less severe;
+
+•	Soil water storage will be unaffected;
+
+•	The soil N storage in Zone0 will be depleted more slowly while the soil N in Zone1 will be depleted more quickly; and
+
+
+•	There is likely to be a reduction in irrigation applied to Zone0 and an increase in Zone1 as more water is extracted from Zone1 but this will be moderated by the reduction in growth as N becomes severely limited.
+
+These expectations are largely met.  There are some strange dynamics when 0.25 of the roots are in Zone1 for which there is no obvious explanation but otherwise the patterns are as expected.
+]]></MemoText>
+      </Memo>
       <Graph>
         <Name>PlantWt</Name>
         <Series>
@@ -14202,7 +14839,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>PlantMass</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14210,7 +14847,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14245,7 +14882,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Harvested</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14253,7 +14890,7 @@ namespace Models
           <Cumulative>true</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14288,7 +14925,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SW_Demand</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14296,7 +14933,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14331,7 +14968,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SW_Uptake</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14339,7 +14976,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14374,7 +15011,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>glfWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14382,7 +15019,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14417,7 +15054,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>glfNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14425,7 +15062,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14460,7 +15097,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14469,7 +15106,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14504,7 +15141,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilWater</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14513,7 +15150,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14548,7 +15185,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14557,7 +15194,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14592,7 +15229,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>SoilNitrogen</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14601,7 +15238,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14636,7 +15273,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Irrigation</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14645,7 +15282,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14680,7 +15317,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Irrigation</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14689,7 +15326,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -14724,7 +15361,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Fertiliser</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14733,13 +15370,13 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone0'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
           <Inverted>false</Inverted>
           <Minimum>0</Minimum>
-          <Maximum>300</Maximum>
+          <Maximum>2300</Maximum>
           <Interval>NaN</Interval>
         </Axis>
         <Axis>
@@ -14768,7 +15405,7 @@ namespace Models
           <MarkerSize>Normal</MarkerSize>
           <Line>Solid</Line>
           <LineThickness>Normal</LineThickness>
-          <TableName>TestWithWaterStress</TableName>
+          <TableName>TestWithNitrogenStress</TableName>
           <XFieldName>Date</XFieldName>
           <YFieldName>Fertiliser</YFieldName>
           <ShowInLegend>true</ShowInLegend>
@@ -14777,13 +15414,13 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter>[Zone] = 'Zone1'</Filter>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
           <Inverted>false</Inverted>
           <Minimum>0</Minimum>
-          <Maximum>300</Maximum>
+          <Maximum>2300</Maximum>
           <Interval>NaN</Interval>
         </Axis>
         <Axis>
@@ -14796,33 +15433,6 @@ namespace Models
         <LegendPosition>TopRight</LegendPosition>
         <DisabledSeries />
       </Graph>
-      <IncludeInDocumentation>true</IncludeInDocumentation>
-      <ShowPageOfGraphs>true</ShowPageOfGraphs>
-    </Folder>
-    <Folder>
-      <Name>Test With Nitrogen Stress</Name>
-      <Memo>
-        <Name>Memo TestWithNitrogenStress</Name>
-        <IncludeInDocumentation>true</IncludeInDocumentation>
-        <MemoText><![CDATA[This series of simulations are as for the ‘No Stress’ series except there is no fertiliser (irrigation remains turned on).  There is also no soil organic matter or initial mineral N so this is a run-down experiment.  The expectation is that as more roots are spread into Zone1 that:
-•	The plant can access more N so more dry matter will be harvested and, later on when there is insufficient stored N, senescence will be slower;
-
-•	Water demand and water uptake will be maintained for longer;
-
-•	There will be no water stress;
-
-•	N stress will be delayed and less severe;
-
-•	Soil water storage will be unaffected;
-
-•	The soil N storage in Zone0 will be depleted more slowly while the soil N in Zone1 will be depleted more quickly; and
-
-
-•	There is likely to be a reduction in irrigation applied to Zone0 and an increase in Zone1 as more water is extracted from Zone1 but this will be moderated by the reduction in growth as N becomes severely limited.
-
-These expectations are largely met.  There are some strange dynamics when 0.25 of the roots are in Zone1 for which there is no obvious explanation but otherwise the patterns are as expected.
-]]></MemoText>
-      </Memo>
       <Experiment>
         <Name>Experiment</Name>
         <Factors>
@@ -14875,10 +15485,10 @@ These expectations are largely met.  There are some strange dynamics when 0.25 o
                 <Name>DoRootsSingle</Name>
                 <IncludeInDocumentation>true</IncludeInDocumentation>
                 <Script>
+                  <Zone1Prop>0</Zone1Prop>
                   <Zone0Depth>600</Zone0Depth>
                   <Zone0Mass>500</Zone0Mass>
                   <Zone1Name>Zone1</Zone1Name>
-                  <Zone1Prop>0</Zone1Prop>
                   <Zone2Name>Zone2</Zone2Name>
                   <Zone2Prop>0</Zone2Prop>
                   <Zone3Name>Zone3</Zone3Name>
@@ -16876,616 +17486,6 @@ namespace Models
         </Simulation>
         <IncludeInDocumentation>true</IncludeInDocumentation>
       </Experiment>
-      <Graph>
-        <Name>PlantWt</Name>
-        <Series>
-          <Name>Ryegrass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>PlantMass</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>2600</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>Harvested</Name>
-        <Series>
-          <Name>Ryegrass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>Harvested</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>true</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>WaterDemand</Name>
-        <Series>
-          <Name>Demand</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SW_Demand</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>5</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>WaterUptake</Name>
-        <Series>
-          <Name>Uptake</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-1663232</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SW_Uptake</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>5</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>WaterStress</Name>
-        <Series>
-          <Name>Ryegrass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>glfWater</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>1.05</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>NStress</Name>
-        <Series>
-          <Name>Ryegrass</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>glfNitrogen</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>1.05</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>SoilWaterZone0</Name>
-        <Series>
-          <Name>Water</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SoilWater</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone0'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>50</Minimum>
-          <Maximum>275</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>SoilWaterZone1</Name>
-        <Series>
-          <Name>Water</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SoilWater</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone1'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>50</Minimum>
-          <Maximum>275</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>SoilNitrogenZone1</Name>
-        <Series>
-          <Name>Nitrogen</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SoilNitrogen</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone1'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>150</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>SoilNitrogenZone0</Name>
-        <Series>
-          <Name>Nitrogen</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>SoilNitrogen</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>false</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone0'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>150</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>IrrigationAppliedZone0</Name>
-        <Series>
-          <Name>Irrigation</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>Irrigation</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>true</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone0'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>2000</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>IrrigationAppliedZone1</Name>
-        <Series>
-          <Name>Irrigation</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>Irrigation</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>true</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone1'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>2000</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>FertiliserAppliedZone0</Name>
-        <Series>
-          <Name>Fertiliser</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>Fertiliser</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>true</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone0'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>2300</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
-      <Graph>
-        <Name>FertiliserAppliedZone1</Name>
-        <Series>
-          <Name>Fertiliser</Name>
-          <IncludeInDocumentation>true</IncludeInDocumentation>
-          <Type>Scatter</Type>
-          <XAxis>Bottom</XAxis>
-          <YAxis>Left</YAxis>
-          <ColourArgb>-16736653</ColourArgb>
-          <FactorIndexToVaryColours>1</FactorIndexToVaryColours>
-          <FactorIndexToVaryMarkers>-1</FactorIndexToVaryMarkers>
-          <FactorIndexToVaryLines>-1</FactorIndexToVaryLines>
-          <Marker>None</Marker>
-          <MarkerSize>Normal</MarkerSize>
-          <Line>Solid</Line>
-          <LineThickness>Normal</LineThickness>
-          <TableName>TestWithNitrogenStress</TableName>
-          <XFieldName>Date</XFieldName>
-          <YFieldName>Fertiliser</YFieldName>
-          <ShowInLegend>true</ShowInLegend>
-          <IncludeSeriesNameInLegend>false</IncludeSeriesNameInLegend>
-          <Cumulative>true</Cumulative>
-          <CumulativeX>false</CumulativeX>
-          <Filter>[Zone] = 'Zone1'</Filter>
-        </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
-        <Axis>
-          <Type>Left</Type>
-          <Title />
-          <Inverted>false</Inverted>
-          <Minimum>0</Minimum>
-          <Maximum>2300</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <Axis>
-          <Type>Bottom</Type>
-          <Inverted>false</Inverted>
-          <Minimum>NaN</Minimum>
-          <Maximum>NaN</Maximum>
-          <Interval>NaN</Interval>
-        </Axis>
-        <LegendPosition>TopRight</LegendPosition>
-        <DisabledSeries />
-      </Graph>
       <IncludeInDocumentation>true</IncludeInDocumentation>
       <ShowPageOfGraphs>true</ShowPageOfGraphs>
     </Folder>
@@ -17531,7 +17531,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17574,7 +17574,7 @@ namespace Models
           <Cumulative>true</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17617,7 +17617,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17660,7 +17660,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17703,7 +17703,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17746,7 +17746,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17790,7 +17790,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17834,7 +17834,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17878,7 +17878,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -17922,7 +17922,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -21789,7 +21789,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -21832,7 +21832,7 @@ namespace Models
           <Cumulative>true</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -21875,7 +21875,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -21918,7 +21918,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -21961,7 +21961,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -22004,7 +22004,7 @@ namespace Models
           <Cumulative>false</Cumulative>
           <CumulativeX>false</CumulativeX>
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -22048,7 +22048,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -22092,7 +22092,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -22136,7 +22136,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
@@ -22180,7 +22180,7 @@ namespace Models
           <CumulativeX>false</CumulativeX>
           <Filter />
         </Series>
-        <IncludeInDocumentation>false</IncludeInDocumentation>
+        <IncludeInDocumentation>true</IncludeInDocumentation>
         <Axis>
           <Type>Left</Type>
           <Title />
